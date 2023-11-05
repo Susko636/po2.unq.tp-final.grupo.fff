@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * 
- */
-module tpfinal {
-	requires junit;
-}
