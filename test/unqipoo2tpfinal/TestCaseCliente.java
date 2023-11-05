@@ -14,6 +14,7 @@ import unqipoo2tpfinal.Cliente;
 class TestCaseCliente {
 	
 	private Cliente shipper; 
+	private Cliente consignee;
 	private EmpresaTransportista empresa;
 	private ArrayList<Chofer> choferes;
 	private ArrayList<Camion> camiones;
@@ -23,6 +24,7 @@ class TestCaseCliente {
 	@BeforeEach
 	public void setUp() {
 		shipper  = new Shipper("cliente 1");
+		consignee  = new Consignee("cliente 2");
 		empresa  = mock(EmpresaTransportista.class);
 		chofer   = mock(Chofer.class);
 		camion   = mock(Camion.class);
@@ -42,5 +44,15 @@ class TestCaseCliente {
 		assertTrue(empresa.getChoferes().contains(shipper.getChoferAsignado()));
 		assertTrue(empresa.getCamiones().contains(shipper.getCamionAsignado()));
 	}
-
+	
+	@Test
+	void testContratarEmpresaTransportistaConsignee() {
+		when(empresa.getChoferes()).thenReturn(choferes);
+		when(empresa.getCamiones()).thenReturn(camiones);
+		when(empresa.asignarChofer()).thenReturn(chofer);
+		when(empresa.asignarCamion()).thenReturn(camion);
+		consignee.contratarEmpresa(empresa);
+		assertTrue(empresa.getChoferes().contains(consignee.getChoferAsignado()));
+		assertTrue(empresa.getCamiones().contains(consignee.getCamionAsignado()));
+	}
 }
