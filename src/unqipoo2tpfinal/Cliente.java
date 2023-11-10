@@ -1,6 +1,6 @@
 package unqipoo2tpfinal;
 
-abstract class Cliente {
+public abstract class Cliente {
 
 	protected String nombre;
 	protected Camion camionAsignado;
