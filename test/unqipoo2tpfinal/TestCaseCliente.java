@@ -43,6 +43,9 @@ class TestCaseCliente {
 		shipper.contratarEmpresa(empresa);
 		assertTrue(empresa.getChoferes().contains(shipper.getChoferAsignado()));
 		assertTrue(empresa.getCamiones().contains(shipper.getCamionAsignado()));
+		
+		verify(empresa).getCamiones();
+		verify(empresa).getChoferes();
 	}
 	
 	@Test
@@ -54,5 +57,8 @@ class TestCaseCliente {
 		consignee.contratarEmpresa(empresa);
 		assertTrue(empresa.getChoferes().contains(consignee.getChoferAsignado()));
 		assertTrue(empresa.getCamiones().contains(consignee.getCamionAsignado()));
+		
+		verify(empresa).getCamiones();
+		verify(empresa).getChoferes();
 	}
 }
