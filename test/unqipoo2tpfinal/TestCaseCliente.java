@@ -9,7 +9,12 @@ import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;
 
-
+import unqipoo2tpfinal.cliente.Cliente;
+import unqipoo2tpfinal.cliente.Consignee;
+import unqipoo2tpfinal.cliente.Shipper;
+import unqipoo2tpfinal.empresaTransportista.Camion;
+import unqipoo2tpfinal.empresaTransportista.Chofer;
+import unqipoo2tpfinal.empresaTransportista.EmpresaTransportista;
 
 class TestCaseCliente {
 	
@@ -51,8 +56,8 @@ class TestCaseCliente {
 		assertTrue(empresa.getChoferes().contains(shipper.getChoferAsignado()));
 		assertTrue(empresa.getCamiones().contains(shipper.getCamionAsignado()));
 		
-		verify(empresa).getCamiones();
-		verify(empresa).getChoferes();
+		verify(empresa).asignarCamion();
+		verify(empresa).asignarChofer();
 	}
 	
 	@Test
@@ -69,7 +74,7 @@ class TestCaseCliente {
 		assertTrue(empresa.getChoferes().contains(consignee.getChoferAsignado()));
 		assertTrue(empresa.getCamiones().contains(consignee.getCamionAsignado()));
 		
-		verify(empresa).getCamiones();
-		verify(empresa).getChoferes();
+		verify(empresa).asignarCamion();
+		verify(empresa).asignarChofer();
 	}
 }

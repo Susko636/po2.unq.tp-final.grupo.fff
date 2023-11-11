@@ -1,4 +1,4 @@
-package unqipoo2tpfinal;
+package unqipoo2tpfinal.cliente;
 
 public class Shipper extends Cliente {
 

@@ -1,4 +1,4 @@
-package unqipoo2tpfinal;
+package unqipoo2tpfinal.container;
 
 public class Container {
 	
@@ -6,12 +6,15 @@ public class Container {
 	private Double altura;
 	private Double largo;
 	private Double pesoTotal;
+	protected Double consumo;
 	
 	public Container(Double ancho, Double altura,Double largo, Double pesoTotal) {
+		super();
 		this.ancho = ancho;
 		this.altura = altura;
 		this.largo = largo;
 		this.pesoTotal = pesoTotal;
+		this.consumo = 0d;
 	}
 
 	public Double getAncho() {
@@ -30,5 +33,8 @@ public class Container {
 		return pesoTotal;
 	}
 	
+	public Double getConsumo() {
+		return consumo;
+	}
 	
 }

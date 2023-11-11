@@ -1,10 +1,11 @@
-package unqipoo2tpfinal;
+package unqipoo2tpfinal.empresaTransportista;
 
 public class Chofer {
 	
 	private int dni;
 	
 	public Chofer(int dni) {
+		super();
 		this.dni = dni;
 	}
 

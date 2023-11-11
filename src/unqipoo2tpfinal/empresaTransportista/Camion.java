@@ -1,4 +1,4 @@
-package unqipoo2tpfinal;
+package unqipoo2tpfinal.empresaTransportista;
 
 public class Camion {
 	
@@ -7,6 +7,7 @@ public class Camion {
 	
 	
 	public Camion(String patente, String marca) {
+		super();
 		this.marca = marca;
 		this.patente = patente;
 	}
