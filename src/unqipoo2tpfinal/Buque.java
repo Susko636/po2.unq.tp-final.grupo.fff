@@ -5,21 +5,20 @@ public class Buque {
 	private Viaje viajeAsignado;
 	private TerminalPortuaria proximaTerminal;
 	private EstadoBuque estadoBuque;
-	private int posicionInicial;
 	private int posicionActual;
 	
 	public Buque(Viaje viajeAsignado, int posicionActual ) {
-		this.posicionInicial = posicionActual;
 		this.viajeAsignado = viajeAsignado;
 		this.posicionActual = posicionActual;
+		this.estadoBuque = new Departing();
+	}
+	
+	public void distanciaA() {
+		this.estadoBuque.distanciaDe(this);
 	}
 	
 	public Viaje getViajeAsignado() {
 		return this.viajeAsignado;
-	}
-	
-	public void setViajeAsignado(Viaje viajeAsignado) {
-		this.viajeAsignado = viajeAsignado;
 	}
 	
 	public EstadoBuque getEstadoBuque() {
@@ -40,6 +39,10 @@ public class Buque {
 
 	public int getPosicionActual() {
 		return posicionActual;
+	}
+
+	public void avanzar(int i) {
+		this.posicionActual += i;
 	}
 	
 	

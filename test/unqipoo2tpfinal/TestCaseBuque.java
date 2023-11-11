@@ -2,6 +2,8 @@ package unqipoo2tpfinal;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -25,23 +27,26 @@ class TestCaseBuque {
 	
 	@Test
 	void testEsEstadoDeparting() {
-
-		unBuque.setEstadoBuque(new Departing());
 		estado = mock(Departing.class);
-		when(estado.getEstado(unBuque)).thenReturn(unBuque.getEstadoBuque());
+		unBuque.setEstadoBuque(estado);
 		
-			assertEquals(unBuque.getEstadoBuque(), estado.getEstado(unBuque));
+		when(estado.esDeparting()).thenReturn(true);
 		
-			verify(estado).getEstado(unBuque);
+		assertTrue(unBuque.getEstadoBuque().esDeparting());
+		
+		verify(estado).esDeparting();
 	}
 	
-	
-	//void testEsEstadoOutbound() {
-	//	estado = mock(Outbound.class);
-	//	unBuque.setPosicionActual(10);
-	//	assertEquals(unBuque.getEstadoBuque(), estado);
+	@Test
+	void testEsEstadoOutbound() {
+		estado = mock(Outbound.class);
+
+		unBuque.avanzar(1); //kilometro
+		unBuque.distanciaA();
 		
-	//}
+		assertEquals(unBuque.getEstadoBuque(), estado);
+		
+	}
 	
 	
 	

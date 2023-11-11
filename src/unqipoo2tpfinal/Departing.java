@@ -10,8 +10,16 @@ public class Departing implements EstadoBuque{
 
 
 	public void distanciaDe(Buque unBuque) {
+		if (unBuque.getPosicionActual() > unBuque.getViajeAsignado().getTerminalDeSalida().getPosicion()) {
+			unBuque.setEstadoBuque(new Outbound());
+			unBuque.getViajeAsignado().getTerminalDeSalida().informarSalidaBuque();
+		}
+	}
 
-		
+
+	@Override
+	public boolean esDeparting() {
+		return true;
 	}
 
 }
