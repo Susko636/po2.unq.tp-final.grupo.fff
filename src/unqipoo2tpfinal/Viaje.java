@@ -1,6 +1,7 @@
 package unqipoo2tpfinal;
 
 import java.sql.Date;
+import java.util.stream.Collectors;
 
 public class Viaje {
 	
@@ -11,6 +12,10 @@ public class Viaje {
 	private TerminalPortuaria terminalDeLlegada;
 	private Buque buqueAsignado;
 	
+	public Viaje(Buque unBuque,Date fechaInicio) {
+		this.buqueAsignado = unBuque;
+		this.fechaSalida = fechaInicio;
+	}
 	
 	public void informar() {
 		
@@ -35,8 +40,19 @@ public class Viaje {
 	public TerminalPortuaria getTerminalDeSalida() {
 		return this.terminalDeSalida;
 	}
-
+ 
 	public TerminalPortuaria getTerminalDeLlegada() {
+		//this.terminalDeLlegada = (TerminalPortuaria)circuito.getTramos()
+		//													.stream()
+		//													.filter(tramo -> tramo.getTerminalDeSalida()
+		//													.equals(this.terminalDeSalida));
+		 this.terminalDeLlegada =   circuito.getTramos()
+		            						.stream()
+		            						.filter(tramo -> tramo.getTerminalDeSalida().equals(this.terminalDeSalida))
+		            						.map(Tramo::getTerminalDeLlegada)  
+		            						.findFirst() 
+		            						.orElse(null);  
+		 
 		return this.terminalDeLlegada;
 	}
 

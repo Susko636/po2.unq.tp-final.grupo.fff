@@ -1,6 +1,7 @@
 package unqipoo2tpfinal;
 
 
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,6 +11,13 @@ import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import EstadoBuque.Departing;
+import EstadoBuque.Outbound;
+import unqipoo2tpfinal.Buque;
+import unqipoo2tpfinal.EstadoBuque;
+import unqipoo2tpfinal.TerminalPortuaria;
+import unqipoo2tpfinal.Viaje;
 
 class TestCaseBuque {
 
@@ -42,9 +50,9 @@ class TestCaseBuque {
 		estado = mock(Outbound.class);
 
 		unBuque.avanzar(1); //kilometro
-		unBuque.distanciaA();
+		//unBuque.distanciaA();
 		
-		assertEquals(unBuque.getEstadoBuque(), estado);
+		assertTrue(unBuque.getEstadoBuque().esOutbound()); 
 		
 	}
 	

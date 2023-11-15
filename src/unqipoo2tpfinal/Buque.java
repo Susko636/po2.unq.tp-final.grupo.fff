@@ -1,5 +1,7 @@
 package unqipoo2tpfinal;
 
+import EstadoBuque.Departing;
+
 public class Buque {
 	
 	private Viaje viajeAsignado;
@@ -11,6 +13,7 @@ public class Buque {
 		this.viajeAsignado = viajeAsignado;
 		this.posicionActual = posicionActual;
 		this.estadoBuque = new Departing();
+		this.proximaTerminal = viajeAsignado.getTerminalDeLlegada();
 	}
 	
 	public void distanciaA() {
