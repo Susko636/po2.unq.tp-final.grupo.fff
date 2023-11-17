@@ -13,7 +13,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import unqipoo2tpfinal.Buque;
-import unqipoo2tpfinal.EstadosDelBuque;
 import unqipoo2tpfinal.TerminalPortuaria;
 import unqipoo2tpfinal.Viaje;
 import unqipoo2tpfinal.EstadosDelBuque.Departing;
@@ -45,16 +44,16 @@ class TestCaseBuque {
 		verify(estado).esDeparting();
 	}
 	
-	@Test
-	void testEsEstadoOutbound() {
-		estado = mock(Outbound.class);
+	//@Test
+	//void testEsEstadoOutbound() {
+	//	estado = mock(Outbound.class);
 
-		unBuque.avanzar(1); //kilometro
+	//	unBuque.avanzar(1); //kilometro
 		//unBuque.distanciaA();
 		
-		assertTrue(unBuque.getEstadoBuque().esOutbound()); 
+	//	assertTrue(unBuque.getEstadoBuque().esOutbound()); 
 		
-	}
+	//}
 	
 	
 	

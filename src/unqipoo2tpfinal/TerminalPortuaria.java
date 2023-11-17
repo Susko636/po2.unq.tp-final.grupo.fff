@@ -1,8 +1,5 @@
 package unqipoo2tpfinal;
 
-import unqipoo2tpfinal.EstadosDelBuque.Departing;
-import unqipoo2tpfinal.EstadosDelBuque.Outbound;
-
 public class TerminalPortuaria {
 	
 	private int numeroDeTerminal;
