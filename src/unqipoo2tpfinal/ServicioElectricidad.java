@@ -1,6 +1,6 @@
 package unqipoo2tpfinal;
 
-public class ServicioElectricidad implements Servicio{
+public class ServicioElectricidad implements Servicio {
 
 	@Override
 	public double precio(Servicio unServicio) {
