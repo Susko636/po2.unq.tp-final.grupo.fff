@@ -1,23 +1,23 @@
 package unqipoo2tpfinal;
 
 import unqipoo2tpfinal.EstadosDelBuque.Departing;
+import unqipoo2tpfinal.EstadosDelBuque.Outbound;
+import unqipoo2tpfinal.EstadosDelBuque.Working;
 
 public class Buque {
 	
 	private Viaje viajeAsignado;
-	private TerminalPortuaria proximaTerminal;
 	private EstadoBuque estadoBuque;
-	private int posicionActual;
+	private Double posicionActual;
 	
-	public Buque(Viaje viajeAsignado, int posicionActual ) {
+	public Buque(Viaje viajeAsignado, Double posicionActual ) {
 		this.viajeAsignado = viajeAsignado;
 		this.posicionActual = posicionActual;
 		this.estadoBuque = new Departing();
-		this.proximaTerminal = viajeAsignado.getTerminalDeLlegada();
 	}
 	
-	public void distanciaA() {
-		this.estadoBuque.distanciaDe(this);
+	public void distanciaATerminalDeLlegada() {
+		this.estadoBuque.distanciaHasta(this.getViajeAsignado(), this.getPosicionActual());
 	}
 	
 	public Viaje getViajeAsignado() {
@@ -32,24 +32,39 @@ public class Buque {
 		this.estadoBuque = estadoBuque;
 	}
 	
-	public TerminalPortuaria getProximaTerminal() {
-		return this.proximaTerminal;
-	}
-	
-	public void setProximaTerminal(TerminalPortuaria proximaTerminal) {
-		this.proximaTerminal = proximaTerminal;
+
+	public Double getPosicionActual() {
+		return this.posicionActual;
 	}
 
-	public int getPosicionActual() {
-		return posicionActual;
-	}
-
-	public void avanzar(int i) {
+	public void avanzar(Double i) {
 		this.posicionActual += i;
 	}
+
+	public void informarCercanoArrivo(TerminalPortuaria terminalDeLlegada) {
+		terminalDeLlegada.informarCercanoArrivoDe(this);
+		terminalDeLlegada.comenzarTrabajo(this);
+	}
+
+	public void informarSalidaBuque(TerminalPortuaria terminalDeSalida) {
+		terminalDeSalida.informarSalidaDe(this);
+	}
+
+	public void empezarTrabajo() {
+		this.cambiarAWorking();
+		this.terminarTrabajo();
+	}
 	
+	public void cambiarAWorking() {
+		this.setEstadoBuque(new Working());
+	}
 	
-	
-	
+	public void terminarTrabajo() {
+		this.setEstadoBuque(new Departing());
+	}
+
+	public void cambiarAOutbound() {
+		this.setEstadoBuque(new Outbound());
+	}
 	
 }

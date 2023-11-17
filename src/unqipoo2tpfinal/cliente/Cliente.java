@@ -46,4 +46,9 @@ public abstract class Cliente {
 	
 	public abstract void ordenDeExporacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada);
 	
+	public void notificarChoferYCamion(Orden orden) {
+		orden.setChofer(this.getChoferAsignado());
+		orden.setCamion(this.getCamionAsignado());
+	}
+	
 }

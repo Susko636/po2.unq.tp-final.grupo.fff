@@ -2,11 +2,7 @@ package unqipoo2tpfinal;
 
 public interface EstadoBuque {
 	
-	EstadoBuque getEstado(Buque unBuque);
-	
-	void distanciaDe(Buque unBuque);
-
-	void irASiguienteEstado(Buque unBuque);
+	void distanciaHasta(Viaje unViaje, Double posicionActual);
 
 	boolean esDeparting();
 	

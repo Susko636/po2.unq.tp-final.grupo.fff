@@ -11,7 +11,7 @@ public class Tramo {
 		this.terminalDeSalida = terminalSalida;
 		this.terminalDeLlegada = terminalLlegada;
 	}
-
+ 
 	public Double getTiempoDeRecorrido() {
 		return this.tiempoDeRecorrido;
 	}

@@ -10,6 +10,12 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+<<<<<<< HEAD
+=======
+import unqipoo2tpfinal.Buque;
+import unqipoo2tpfinal.TerminalPortuaria;
+import unqipoo2tpfinal.Viaje;
+>>>>>>> 1cedfc799d471b6774fd61bc41139c60deb24e71
 import unqipoo2tpfinal.EstadosDelBuque.Departing;
 import unqipoo2tpfinal.EstadosDelBuque.Outbound;
 
@@ -40,16 +46,26 @@ class TestCaseBuque {
 		verify(estado).esDeparting();
 	}
 	
+<<<<<<< HEAD
 	/*@Test
 	void testEsEstadoOutbound() {
 		estado = mock(Outbound.class);
+=======
+	//@Test
+	//void testEsEstadoOutbound() {
+	//	estado = mock(Outbound.class);
+>>>>>>> 1cedfc799d471b6774fd61bc41139c60deb24e71
 
-		unBuque.avanzar(1); //kilometro
+	//	unBuque.avanzar(1); //kilometro
 		//unBuque.distanciaA();
 		
-		assertTrue(unBuque.getEstadoBuque().esOutbound()); 
+	//	assertTrue(unBuque.getEstadoBuque().esOutbound()); 
 		
+<<<<<<< HEAD
 	}*/
+=======
+	//}
+>>>>>>> 1cedfc799d471b6774fd61bc41139c60deb24e71
 	
 	
 	
