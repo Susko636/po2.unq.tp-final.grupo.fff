@@ -1,23 +1,19 @@
-package EstadoBuque;
+package unqipoo2tpfinal.EstadosDelBuque;
 
 import unqipoo2tpfinal.Buque;
 import unqipoo2tpfinal.EstadoBuque;
 
-public class Outbound implements EstadoBuque{
+public class Working implements EstadoBuque{
 
 
 	public EstadoBuque getEstado(Buque unBuque) {
-		
-		return unBuque.getEstadoBuque();
+
+		return null;
 	}
 
 
 	public void distanciaDe(Buque unBuque) {
-		
-		if (50 >= Math.abs(unBuque.getPosicionActual() - unBuque.getViajeAsignado().getTerminalDeLlegada().getPosicion())) {
-			unBuque.setEstadoBuque(new InBound());
-			unBuque.getViajeAsignado().getTerminalDeSalida().informarCercanoArribo(unBuque);
-		};		
+		//Simplemente espera la orden de la terminal para partir
 	}
 
 
@@ -29,13 +25,13 @@ public class Outbound implements EstadoBuque{
 
 	@Override
 	public void irASiguienteEstado(Buque unBuque) {
-		unBuque.setEstadoBuque(new InBound());
+		unBuque.setEstadoBuque(new Departing());
 		
 	}
 	
 	@Override
 	public boolean esOutbound() {
-		return true;
+		return false;
 	}
 
 
@@ -53,7 +49,6 @@ public class Outbound implements EstadoBuque{
 
 	@Override
 	public boolean esWorking() {
-		return false;
+		return true;
 	}
-	
 }

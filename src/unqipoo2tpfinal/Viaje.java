@@ -12,9 +12,11 @@ public class Viaje {
 	private TerminalPortuaria terminalDeLlegada;
 	private Buque buqueAsignado;
 	
-	public Viaje(Buque unBuque,Date fechaInicio) {
+	public Viaje(Buque unBuque,Date fechaInicio,TerminalPortuaria ts,TerminalPortuaria tl ) {
 		this.buqueAsignado = unBuque;
 		this.fechaSalida = fechaInicio;
+		this.terminalDeSalida = ts;
+		this.terminalDeLlegada = tl;
 	}
 	
 	public void informar() {
@@ -41,18 +43,7 @@ public class Viaje {
 		return this.terminalDeSalida;
 	}
  
-	public TerminalPortuaria getTerminalDeLlegada() {
-		//this.terminalDeLlegada = (TerminalPortuaria)circuito.getTramos()
-		//													.stream()
-		//													.filter(tramo -> tramo.getTerminalDeSalida()
-		//													.equals(this.terminalDeSalida));
-		 this.terminalDeLlegada =   circuito.getTramos()
-		            						.stream()
-		            						.filter(tramo -> tramo.getTerminalDeSalida().equals(this.terminalDeSalida))
-		            						.map(Tramo::getTerminalDeLlegada)  
-		            						.findFirst() 
-		            						.orElse(null);  
-		 
+	public TerminalPortuaria getTerminalDeLlegada() { 
 		return this.terminalDeLlegada;
 	}
 

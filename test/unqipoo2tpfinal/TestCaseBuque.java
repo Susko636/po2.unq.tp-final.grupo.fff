@@ -12,12 +12,12 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import EstadoBuque.Departing;
-import EstadoBuque.Outbound;
 import unqipoo2tpfinal.Buque;
-import unqipoo2tpfinal.EstadoBuque;
+import unqipoo2tpfinal.EstadosDelBuque;
 import unqipoo2tpfinal.TerminalPortuaria;
 import unqipoo2tpfinal.Viaje;
+import unqipoo2tpfinal.EstadosDelBuque.Departing;
+import unqipoo2tpfinal.EstadosDelBuque.Outbound;
 
 class TestCaseBuque {
 

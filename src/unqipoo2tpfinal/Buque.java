@@ -1,6 +1,6 @@
 package unqipoo2tpfinal;
 
-import EstadoBuque.Departing;
+import unqipoo2tpfinal.EstadosDelBuque.Departing;
 
 public class Buque {
 	

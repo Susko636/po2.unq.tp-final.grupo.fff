@@ -1,4 +1,4 @@
-package EstadoBuque;
+package unqipoo2tpfinal.EstadosDelBuque;
 
 import unqipoo2tpfinal.Buque;
 import unqipoo2tpfinal.EstadoBuque;
