@@ -2,37 +2,23 @@ package unqipoo2tpfinal.EstadosDelBuque;
 
 import unqipoo2tpfinal.Buque;
 import unqipoo2tpfinal.EstadoBuque;
+import unqipoo2tpfinal.Viaje;
 
 public class Departing implements EstadoBuque{
-	
 
-	public EstadoBuque getEstado(Buque unBuque) {
-
-		return unBuque.getEstadoBuque();
-	}
-
-
-	public void distanciaDe(Buque unBuque) {
-		if (unBuque.getPosicionActual() > unBuque.getViajeAsignado().getTerminalDeSalida().getPosicion()) {
-			unBuque.setEstadoBuque(new Outbound());
-			unBuque.getViajeAsignado().getTerminalDeSalida().informarSalidaBuque(unBuque);
+	@Override
+	public void distanciaHasta(Viaje unViaje, Double posicionActual) {
+		Buque buque = unViaje.getBuqueAsignado();
+		if (posicionActual > unViaje.getTerminalDeSalida().getPosicion()) {
+			buque.informarSalidaBuque(unViaje.getTerminalDeSalida());
+			buque.setEstadoBuque(new Outbound());
 		}
 	}
-
 
 	@Override
 	public boolean esDeparting() {
 		return true;
 	}
-
-
-	@Override
-	public void irASiguienteEstado(Buque unBuque) {
-		
-		unBuque.setEstadoBuque(new Outbound());
-		
-	}
-
 
 	@Override
 	public boolean esOutbound() {

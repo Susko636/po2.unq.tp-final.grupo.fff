@@ -1,32 +1,18 @@
 package unqipoo2tpfinal.EstadosDelBuque;
 
-import unqipoo2tpfinal.Buque;
 import unqipoo2tpfinal.EstadoBuque;
+import unqipoo2tpfinal.Viaje;
 
 public class Working implements EstadoBuque{
-
-
-	public EstadoBuque getEstado(Buque unBuque) {
-
-		return null;
+	
+	@Override
+	public void distanciaHasta(Viaje unViaje, Double posicionActual) {
+		// se queda a la espera de que terminen los trabajos de carga o descarga.
 	}
-
-
-	public void distanciaDe(Buque unBuque) {
-		//Simplemente espera la orden de la terminal para partir
-	}
-
-
+	
 	@Override
 	public boolean esDeparting() {
 		return false;
-	}
-
-
-	@Override
-	public void irASiguienteEstado(Buque unBuque) {
-		unBuque.setEstadoBuque(new Departing());
-		
 	}
 	
 	@Override
@@ -51,4 +37,5 @@ public class Working implements EstadoBuque{
 	public boolean esWorking() {
 		return true;
 	}
+
 }
