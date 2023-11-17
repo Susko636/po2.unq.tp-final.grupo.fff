@@ -36,4 +36,9 @@ public abstract class Cliente {
 		this.setCamionAsignado(empresa.asignarCamion());
 	}
 	
+	public void notificarChoferYCamion(Orden orden) {
+		orden.setChofer(this.getChoferAsignado());
+		orden.setCamion(this.getCamionAsignado());
+	}
+	
 }
