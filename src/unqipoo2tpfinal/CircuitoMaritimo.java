@@ -1,19 +1,16 @@
 package unqipoo2tpfinal;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CircuitoMaritimo {
 	
-	private ArrayList<Tramo> tramos = new ArrayList<Tramo>();
+	private List<Tramo> tramos;
 	
-	public CircuitoMaritimo(ArrayList<Tramo> tramos) {
-		this.tramos = tramos;
+	public CircuitoMaritimo() {
+		this.tramos = new ArrayList<Tramo>();
 	}
 	
-	
-	/*public Tramo avanzarASiguienteTramo(Tramo unTramo) {
-		return this.tramos.stream().filter(t-> t.getTerminalDeLlegada() == unTramo.getTerminalDeSalida()).findFirst();
-	}*/
 	
 	public void agregarTramo(Tramo unTramo) {
 		
@@ -33,7 +30,7 @@ public class CircuitoMaritimo {
 	}
 	
 	
-	public ArrayList<Tramo> getTramos() {
+	public List<Tramo> getTramos() {
 		return this.tramos;
 	}
 	

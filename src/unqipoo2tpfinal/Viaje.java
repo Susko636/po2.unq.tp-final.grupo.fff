@@ -35,10 +35,10 @@ public class Viaje {
 	public List<Tramo> recorridoDelViaje() {
 		int i = 0;
 		List<Tramo> newTramos = new ArrayList<Tramo>();  
-		ArrayList<Tramo> tramos = this.circuito.getTramos();
+		List<Tramo> tramos = this.circuito.getTramos();
 		while(tramos.get(i).getTerminalDeLlegada() != this.terminalDeLlegada) {
-			i++;
 			newTramos.add(tramos.get(i));
+			i++;
 		}
 		newTramos.add(tramos.get(i));
 		return newTramos;
@@ -47,11 +47,11 @@ public class Viaje {
 	public int calcularFechaDeLlegada() {
 		//se asume que el tiempo de recorrido esta divido en horas y la parte fraccionaria en minutos.
 		Double horas =this.recorridoDelViaje().stream().mapToDouble(t-> t.getTiempoDeRecorrido()).sum();
-		return horas.intValue(); 
+		return horas.intValue()/24; 
 	}
 	
 	public void setFechaDeLlegada() {
-		this.fechaLlegada = this.fechaLlegada.plusDays(this.calcularFechaDeLlegada());
+		this.fechaLlegada = this.getFechaSalida().plusDays(this.calcularFechaDeLlegada());
 	}
 	
 	
