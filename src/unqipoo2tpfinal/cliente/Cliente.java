@@ -2,6 +2,7 @@ package unqipoo2tpfinal.cliente;
 
 import java.util.List;
 
+import unqipoo2tpfinal.Orden;
 import unqipoo2tpfinal.OrdenExportacion;
 import unqipoo2tpfinal.TerminalGestionada;
 import unqipoo2tpfinal.TerminalPortuaria;
