@@ -1,5 +1,7 @@
 package unqipoo2tpfinal;
 
+import java.time.LocalDate;
+
 public class TerminalPortuaria {
 	
 	private int numeroDeTerminal;
@@ -33,6 +35,10 @@ public class TerminalPortuaria {
 
 	public void comenzarTrabajo(Buque buque) {
 		buque.empezarTrabajo();
+	}
+
+	public void recibirFechaDeLlegadaDeViaje(LocalDate fechaLlegada) {
+		//informar a shipper o consignee la fecha de llegada de su carga.
 	}
 	
 	

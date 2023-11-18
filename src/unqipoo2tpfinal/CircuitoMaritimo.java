@@ -10,32 +10,31 @@ public class CircuitoMaritimo {
 		this.tramos = tramos;
 	}
 	
+	
+	/*public Tramo avanzarASiguienteTramo(Tramo unTramo) {
+		return this.tramos.stream().filter(t-> t.getTerminalDeLlegada() == unTramo.getTerminalDeSalida()).findFirst();
+	}*/
+	
 	public void agregarTramo(Tramo unTramo) {
 		
-		this.verificarSiEsTramoSiguiente(unTramo);
+		Tramo ultimoTramo = this.buscarUltimoTramo();
 		
-		tramos.add(unTramo);
-		
+		if (ultimoTramo.getTerminalDeLlegada() != unTramo.getTerminalDeSalida()) {
+			throw new AssertionError();
+		}else {
+			tramos.add(unTramo);		// en caso de que sea null el ultimo tramo, lo agrega igualmente.
+		}
 	}
+	
+	public Tramo buscarUltimoTramo() {
+		return this.tramos.stream()
+				.reduce((first, second) -> second)
+				.orElse(null);
+	}
+	
 	
 	public ArrayList<Tramo> getTramos() {
-		return tramos;
-	}
-	
-	public boolean verificarSiEsTramoSiguiente(Tramo unTramo) {
-		
-		Tramo ultimoTramo =   tramos.stream()
-									.reduce((first, second) -> second)
-									.orElse(null);
-		
-		if (ultimoTramo.getTerminalDeLlegada() == unTramo.getTerminalDeSalida()) {
-			
-			return true;
-					
-		}
-		
-		throw new AssertionError();
-		
+		return this.tramos;
 	}
 	
 } 

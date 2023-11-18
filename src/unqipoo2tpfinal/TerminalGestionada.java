@@ -30,5 +30,8 @@ public class TerminalGestionada {
 
 }
 
+//mensaje directo exportar un tipo de container
 
 
+
+//mejor viaje es el q tiene menos terminal intermedias.
