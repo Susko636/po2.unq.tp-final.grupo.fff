@@ -10,12 +10,9 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-<<<<<<< HEAD
-=======
 import unqipoo2tpfinal.Buque;
 import unqipoo2tpfinal.TerminalPortuaria;
 import unqipoo2tpfinal.Viaje;
->>>>>>> 1cedfc799d471b6774fd61bc41139c60deb24e71
 import unqipoo2tpfinal.EstadosDelBuque.Departing;
 import unqipoo2tpfinal.EstadosDelBuque.Outbound;
 

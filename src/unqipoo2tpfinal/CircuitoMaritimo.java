@@ -16,11 +16,15 @@ public class CircuitoMaritimo {
 		
 		Tramo ultimoTramo = this.buscarUltimoTramo();
 		
-		if (ultimoTramo.getTerminalDeLlegada() != unTramo.getTerminalDeSalida()) {
-			throw new AssertionError();
-		}else {
-			tramos.add(unTramo);		// en caso de que sea null el ultimo tramo, lo agrega igualmente.
+		/*if (ultimoTramo != null) {
+			if (ultimoTramo.getTerminalDeLlegada() != unTramo.getTerminalDeSalida()) {
+				throw new AssertionError();
+			} else {
+				this.getTramos().add(unTramo);
+			}
 		}
+		this.getTramos().add(unTramo);
+	    a revisar master */
 	}
 	
 	public Tramo buscarUltimoTramo() {
