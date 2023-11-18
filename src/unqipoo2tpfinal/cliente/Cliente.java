@@ -1,5 +1,10 @@
 package unqipoo2tpfinal.cliente;
 
+import java.util.List;
+
+import unqipoo2tpfinal.OrdenExportacion;
+import unqipoo2tpfinal.TerminalGestionada;
+import unqipoo2tpfinal.TerminalPortuaria;
 import unqipoo2tpfinal.empresaTransportista.Camion;
 import unqipoo2tpfinal.empresaTransportista.Chofer;
 import unqipoo2tpfinal.empresaTransportista.EmpresaTransportista;
@@ -35,6 +40,11 @@ public abstract class Cliente {
 		this.setChoferAsignado(empresa.asignarChofer());
 		this.setCamionAsignado(empresa.asignarCamion());
 	}
+
+	public abstract List<OrdenExportacion> getOrdenesRealizadas();
+
+	
+	public abstract void ordenDeExporacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada);
 	
 	public void notificarChoferYCamion(Orden orden) {
 		orden.setChofer(this.getChoferAsignado());
