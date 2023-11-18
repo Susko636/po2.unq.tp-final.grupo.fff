@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class TEstCaseCircuito {
+class TestCaseCircuito {
 
 	private CircuitoMaritimo unCircuito;
 	private ArrayList<Tramo> tramos = new ArrayList<Tramo>();
