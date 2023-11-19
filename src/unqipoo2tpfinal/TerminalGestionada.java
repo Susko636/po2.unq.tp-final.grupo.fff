@@ -41,9 +41,20 @@ public class TerminalGestionada {
 	public void informarSalidaDe(Buque unBuque) {
 		//Envia E-Mail a todos los Shippers cuyas órdenes de exportacion esten asociadas al viaje, diciendo que su carga salio de la terminal
 	}
+	public void informarCercanoArrivoDe(Buque unBuque) {
+		//Envia E-Mail a todos los consignee que esten esperando este buque
+	}
 	
 	public Double getPosicion() {
 		return posicion;
+	}
+
+	public void comenzarTrabajo(Buque buque) {
+		buque.empezarTrabajo();
+	}
+
+	public void depart(Buque unBuque) {
+		unBuque.cambiarAOutbound();
 	}
 	
 

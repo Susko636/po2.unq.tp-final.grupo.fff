@@ -8,7 +8,7 @@ public class InBound implements EstadoBuque{
 
 	public void distanciaHasta(Viaje unViaje) {
 		Buque buque = unViaje.getBuqueAsignado();
-		if (buque.getPosicionActual() == unViaje.getTerminalDeLlegada().getPosicion()) {
+		if (buque.getPosicionActual().equals(unViaje.getTerminalDeLlegada().getPosicion())) {
 			buque.setEstadoBuque(new Arrived());
 			buque.informarCercanoArrivo(unViaje.getTerminalDeLlegada());
 		}	
