@@ -24,4 +24,12 @@ public class Orden {
 		this.camionAsignado = camion;
 	}
 	
+	public Camion getCamion() {
+		return this.camionAsignado;
+	}
+	
+	public Chofer getChofer() {
+		return this.choferAsignado;
+	}
+	
 }

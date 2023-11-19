@@ -52,5 +52,9 @@ public abstract class Cliente {
 	public void pagar() {
 		//HACER
 	}
+
+	public String getNombre() {
+		return this.nombre;
+	}
 	
 }

@@ -46,7 +46,7 @@ public class Buque {
 		terminalDeLlegada.comenzarTrabajo(this);
 	}
 
-	public void informarSalidaBuque(TerminalPortuaria terminalDeSalida) {
+	public void informarSalidaBuque(TerminalGestionada terminalDeSalida) {
 		terminalDeSalida.informarSalidaDe(this);
 	}
 
