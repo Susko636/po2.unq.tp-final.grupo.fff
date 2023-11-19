@@ -42,6 +42,7 @@ class TestCaseBuque {
 		
 		verify(estado).esDeparting();
 	}
+<<<<<<< HEAD
 	
 	/*@Test
 	void testEsEstadoOutbound() {
@@ -67,4 +68,6 @@ class TestCaseBuque {
 	
 	
 
+=======
+>>>>>>> a37cab32cafd8e38f5ca42a452233b22b7dd7fe0
 }

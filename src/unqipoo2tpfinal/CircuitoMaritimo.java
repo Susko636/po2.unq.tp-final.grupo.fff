@@ -16,15 +16,10 @@ public class CircuitoMaritimo {
 		
 		Tramo ultimoTramo = this.buscarUltimoTramo();
 		
-		/*if (ultimoTramo != null) {
-			if (ultimoTramo.getTerminalDeLlegada() != unTramo.getTerminalDeSalida()) {
-				throw new AssertionError();
-			} else {
-				this.getTramos().add(unTramo);
-			}
+		if (ultimoTramo != null && !ultimoTramo.getTerminalDeLlegada().equals(unTramo.getTerminalDeSalida())) {
+				throw new AssertionError(this.getMessage());
 		}
 		this.getTramos().add(unTramo);
-	    a revisar master */
 	}
 	
 	public Tramo buscarUltimoTramo() {
@@ -36,6 +31,11 @@ public class CircuitoMaritimo {
 	
 	public List<Tramo> getTramos() {
 		return this.tramos;
+	}
+
+
+	public String getMessage() {
+		return "No coinciden las terminales";
 	}
 	
 } 
