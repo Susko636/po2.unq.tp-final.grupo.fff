@@ -1,4 +1,4 @@
-package unqipoo2tpfinal;
+package unqipoo2tpfinal.servicio;
 
 public class ServicioElectricidad implements Servicio {
 

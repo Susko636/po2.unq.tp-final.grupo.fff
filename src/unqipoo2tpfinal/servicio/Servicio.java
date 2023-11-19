@@ -1,4 +1,4 @@
-package unqipoo2tpfinal;
+package unqipoo2tpfinal.servicio;
 
 public interface Servicio {
 
