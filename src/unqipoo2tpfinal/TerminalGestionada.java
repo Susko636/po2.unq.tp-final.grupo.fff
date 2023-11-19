@@ -7,6 +7,9 @@ import unqipoo2tpfinal.orden.Orden;
 import unqipoo2tpfinal.orden.OrdenExportacion;
 
 public class TerminalGestionada {
+	
+	private int numeroDeTerminal;
+	private Double posicion;
 
 	public void ordenDeExportacion(TerminalPortuaria terminalLlegada, Shipper cliente) {
 		this.crearViajeA(terminalLlegada);
@@ -33,6 +36,14 @@ public class TerminalGestionada {
 
 	public void ordenDeImportacion(TerminalPortuaria terminalLlegada, Shipper shipper) {
 		// TODO Auto-generated method stub
+	}
+	
+	public void informarSalidaDe(Buque unBuque) {
+		//Envia E-Mail a todos los Shippers cuyas órdenes de exportacion esten asociadas al viaje, diciendo que su carga salio de la terminal
+	}
+	
+	public Double getPosicion() {
+		return posicion;
 	}
 	
 
