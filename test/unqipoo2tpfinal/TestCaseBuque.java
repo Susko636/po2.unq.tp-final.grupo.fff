@@ -42,30 +42,4 @@ class TestCaseBuque {
 		
 		verify(estado).esDeparting();
 	}
-	
-<<<<<<< HEAD
-	/*@Test
-	void testEsEstadoOutbound() {
-		estado = mock(Outbound.class);
-=======
-	//@Test
-	//void testEsEstadoOutbound() {
-	//	estado = mock(Outbound.class);
->>>>>>> 1cedfc799d471b6774fd61bc41139c60deb24e71
-
-	//	unBuque.avanzar(1); //kilometro
-		//unBuque.distanciaA();
-		
-	//	assertTrue(unBuque.getEstadoBuque().esOutbound()); 
-		
-<<<<<<< HEAD
-	}*/
-=======
-	//}
->>>>>>> 1cedfc799d471b6774fd61bc41139c60deb24e71
-	
-	
-	
-	
-
 }

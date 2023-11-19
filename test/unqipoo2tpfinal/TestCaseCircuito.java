@@ -19,10 +19,12 @@ class TestCaseCircuito {
 	private TerminalPortuaria terminal;
 	private TerminalPortuaria terminal1;
 	
+	
 	@BeforeEach
 	public void setUp() {
+		
 		terminal = mock(TerminalPortuaria.class);
-		terminal1 = mock(TerminalPortuaria.class);		
+		terminal1 = mock(TerminalPortuaria.class);
 		unTramo = mock(Tramo.class);
 		otroTramo = mock(Tramo.class);
 		tramosEsperados = new ArrayList<Tramo>();	
@@ -42,8 +44,8 @@ class TestCaseCircuito {
 	@Test
 	void testUnCircuitoAgregaUnTramo() {
 		
-		when(unTramo.getTerminalDeSalida()).thenReturn(terminal);
-		when(otroTramo.getTerminalDeSalida()).thenReturn(terminal1);
+		when(unTramo.getTerminalDeLlegada()).thenReturn(terminal);
+		when(otroTramo.getTerminalDeSalida()).thenReturn(terminal);
 		
 		tramosEsperados.add(otroTramo); 	//Agrego otro tramo a la lista de tramosEsperados
 		unCircuito.agregarTramo(unTramo);
@@ -53,5 +55,22 @@ class TestCaseCircuito {
 
 	}
 	
+	/*
+	@Test
+	void testUnCircuitoNoPuedeAgregaUnTramoSiNoCoincidenLasTerminales() {
+		
+		String expectedMessage = "No coinciden las terminales";
+	    String actualMessage = unCircuito.getMessage();
+		
+		when(unTramo.getTerminalDeLlegada()).thenReturn(terminal);
+		when(otroTramo.getTerminalDeSalida()).thenReturn(terminal1);
+		
+		unCircuito.agregarTramo(unTramo);
+		unCircuito.agregarTramo(otroTramo);
+		
+		assertTrue(actualMessage.contains(expectedMessage));
 
+	} */
+	
+	
 }
