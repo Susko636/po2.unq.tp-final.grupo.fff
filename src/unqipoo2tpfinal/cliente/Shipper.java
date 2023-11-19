@@ -31,9 +31,13 @@ public class Shipper extends Cliente {
 		return this.ordenesRealizadas;
 	}
 
-	public void ordenDeImportacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada) {
-		unaTerminal.ordenDeImportacion(terminalLlegada,this);
+
+	@Override
+	public void ordenDeExporacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada) {
+		unaTerminal.ordenDeExportacion(terminalLlegada,this);		
 	}
+
+	
 
 }
 

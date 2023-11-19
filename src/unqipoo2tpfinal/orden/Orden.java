@@ -11,10 +11,7 @@ public class Orden {
 	
 	private Chofer choferAsignado;
 	private Camion camionAsignado;
-	private List<Servicio> servicios;
-	private TerminalGestionada terminalDeSalida;
-	private TerminalGestionada terminalDeLlegada;
-	
+	private List<Servicio> servicios;	
 
 	public void setChofer(Chofer chofer) {
 		this.choferAsignado = chofer;

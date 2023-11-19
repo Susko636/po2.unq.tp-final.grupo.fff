@@ -52,5 +52,7 @@ public abstract class Cliente {
 	public void pagar() {
 		//HACER
 	}
+
+	public abstract void ordenDeExporacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada);
 	
 }
