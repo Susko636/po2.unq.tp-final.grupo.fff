@@ -17,7 +17,7 @@ public class Buque {
 	}
 	
 	public void distanciaATerminalDeLlegada() {
-		this.estadoBuque.distanciaHasta(this.getViajeAsignado(), this.getPosicionActual());
+		this.estadoBuque.distanciaHasta(this.getViajeAsignado());
 	}
 	
 	public Viaje getViajeAsignado() {

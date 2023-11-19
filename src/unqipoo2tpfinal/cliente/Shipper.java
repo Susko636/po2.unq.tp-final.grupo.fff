@@ -36,6 +36,13 @@ public class Shipper extends Cliente {
 		// TODO Auto-generated method stub
 		
 	}
+<<<<<<< HEAD
+=======
+
+
+	
+
+>>>>>>> 79563a2b8544e5bd460e55e8fe32b7ae1bc15dc0
 	
 }
 

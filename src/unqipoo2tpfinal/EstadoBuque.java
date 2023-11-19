@@ -2,15 +2,7 @@ package unqipoo2tpfinal;
 
 public interface EstadoBuque {
 	
-	void distanciaHasta(Viaje unViaje, Double posicionActual);
+	void distanciaHasta(Viaje unViaje);
 
-	boolean esDeparting();
 	
-	boolean esOutbound();
-	
-	boolean esArrived();
-	
-	boolean esInBound();
-	
-	boolean esWorking();
 }
