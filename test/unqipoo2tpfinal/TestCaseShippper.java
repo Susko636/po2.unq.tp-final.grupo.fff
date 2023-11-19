@@ -27,7 +27,7 @@ class TestCaseShippper {
 	void test() {
 		
 		shipper.contratarEmpresa(null);		
-		shipper.ordenDeExporacion(unaTerminal, terminalLlegada);
+		shipper.ordenDeExportacion(unaTerminal, terminalLlegada);
 		assertTrue(shipper.getOrdenesRealizadas().size() == 1);
 	}
 

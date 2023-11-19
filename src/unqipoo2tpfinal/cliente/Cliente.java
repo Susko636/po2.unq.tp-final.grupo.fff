@@ -53,12 +53,11 @@ public abstract class Cliente {
 		//HACER
 	}
 
-<<<<<<< HEAD
-	public abstract void ordenDeExporacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada);
-=======
+
+	public abstract void ordenDeExportacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada);
+
 	public String getNombre() {
 		return this.nombre;
 	}
->>>>>>> 3390fc5fbc3ac68e62095a36e7c0dbe34ab8fa9e
 	
 }

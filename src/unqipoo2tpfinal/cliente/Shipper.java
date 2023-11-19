@@ -31,11 +31,14 @@ public class Shipper extends Cliente {
 		return this.ordenesRealizadas;
 	}
 
-
 	@Override
-	public void ordenDeExporacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada) {
-		unaTerminal.ordenDeExportacion(terminalLlegada,this);		
+	public void ordenDeExportacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada) {
+		// TODO Auto-generated method stub
+		
 	}
+
+
+	
 
 	
 

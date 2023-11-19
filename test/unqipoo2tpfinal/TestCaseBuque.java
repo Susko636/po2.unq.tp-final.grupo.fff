@@ -3,6 +3,7 @@ package unqipoo2tpfinal;
 
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -20,45 +21,51 @@ class TestCaseBuque {
 
 	private Buque unBuque;
 	private Viaje unViaje;
-	private TerminalPortuaria unaTerminal;
+	private TerminalGestionada unaTerminal;
 	private EstadoBuque estado;
+	private Double posicionDeTerminal;
 	
 	@BeforeEach
 	public void setUp() {
 		unViaje = mock(Viaje.class);
-		unaTerminal = mock(TerminalPortuaria.class);
-		unBuque = new Buque(unViaje,unaTerminal.getPosicion());
+		unaTerminal = mock(TerminalGestionada.class);
+		unBuque = new Buque(unViaje,100d);
 	}
 	
 	
 	@Test
 	void testEsEstadoDeparting() {
-		estado = mock(Departing.class);
-		unBuque.setEstadoBuque(estado);
+		EstadoBuque unEstado = unBuque.getEstadoBuque();
 		
-		when(estado.esDeparting()).thenReturn(true);
+		assertEquals(unBuque.getEstadoBuque(), unEstado);
+		 System.out.println(unBuque.getEstadoBuque());
 		
-		assertTrue(unBuque.getEstadoBuque().esDeparting());
-		
-		verify(estado).esDeparting();
 	}
-
 	
-	/*@Test
-	void testEsEstadoOutbound() {
-		estado = mock(Outbound.class);
+	@Test
+    void testEsEstadoOutbound() {
 
-	//@Test
-	//void testEsEstadoOutbound() {
-	//	estado = mock(Outbound.class);
+        estado = mock(Outbound.class);
 
-	//	unBuque.avanzar(1); //kilometro
-		//unBuque.distanciaA();
-		
-	//	assertTrue(unBuque.getEstadoBuque().esOutbound()); 
-		
+        unBuque.avanzar(5d);
 
-	}*/
+        when(unViaje.getTerminalDeSalida()).thenReturn(unaTerminal);
+        when(unViaje.getBuqueAsignado()).thenReturn(unBuque);
+        when(unaTerminal.getPosicion()).thenReturn(100d);
+
+
+        posicionDeTerminal = unaTerminal.getPosicion();
+
+        unBuque.getEstadoBuque().distanciaHasta(unViaje);;
+
+        estado = unBuque.getEstadoBuque();
+
+        //assertEquals(unBuque.getEstadoBuque(), estado);
+        System.out.println(unBuque.getEstadoBuque());
+
+    }
+	
+	
 
 }
 

@@ -6,7 +6,7 @@ import unqipoo2tpfinal.Viaje;
 
 public class InBound implements EstadoBuque{
 
-	public void distanciaHasta(Viaje unViaje, Double posicionActual) {
+	public void distanciaHasta(Viaje unViaje) {
 		Buque buque = unViaje.getBuqueAsignado();
 		if (buque.getPosicionActual() == unViaje.getTerminalDeLlegada().getPosicion()) {
 			buque.setEstadoBuque(new Arrived());
@@ -14,28 +14,5 @@ public class InBound implements EstadoBuque{
 		}	
 	}
 	
-	public boolean esDeparting() {
-		return false;
-	}
-	
-	@Override
-	public boolean esOutbound() {
-		return false;
-	}
-
-	@Override
-	public boolean esArrived() {
-		return false;
-	}
-
-	@Override
-	public boolean esInBound() {
-		return true;
-	}
-
-	@Override
-	public boolean esWorking() {
-		return false;
-	}
 	
 }
