@@ -2,8 +2,9 @@ package unqipoo2tpfinal.cliente;
 
 import java.util.List;
 
-import unqipoo2tpfinal.OrdenExportacion;
 import unqipoo2tpfinal.TerminalGestionada;
+import unqipoo2tpfinal.TerminalPortuaria;
+import unqipoo2tpfinal.orden.OrdenExportacion;
 
 public class Consignee extends Cliente {
 	
@@ -16,7 +17,6 @@ public class Consignee extends Cliente {
 		return null;
 	}
 
-	@Override
 	public void ordenDeExporacion(TerminalGestionada unaTerminal,TerminalGestionada terminalSalida, TerminalGestionada terminalLlegada) {
 		// TODO Auto-generated method stub
 		

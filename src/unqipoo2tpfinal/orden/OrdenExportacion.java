@@ -1,9 +1,11 @@
-package unqipoo2tpfinal;
+package unqipoo2tpfinal.orden;
 
 import java.time.LocalDate;
 
+import unqipoo2tpfinal.TerminalPortuaria;
 import unqipoo2tpfinal.empresaTransportista.Camion;
 import unqipoo2tpfinal.empresaTransportista.Chofer;
+import unqipoo2tpfinal.servicio.Servicio;
 
 public class OrdenExportacion extends Orden{
 

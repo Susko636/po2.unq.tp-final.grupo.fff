@@ -3,6 +3,8 @@ package unqipoo2tpfinal;
 import java.time.LocalDate;
 
 import unqipoo2tpfinal.cliente.Shipper;
+import unqipoo2tpfinal.orden.Orden;
+import unqipoo2tpfinal.orden.OrdenExportacion;
 
 public class TerminalGestionada {
 
@@ -25,6 +27,12 @@ public class TerminalGestionada {
 
 	public void agregarOrden(Orden unaOrden) {
 		this.ordenesDeExportacion.add(unaOrden);
+	}
+
+
+
+	public void ordenDeImportacion(TerminalPortuaria terminalLlegada, Shipper shipper) {
+		// TODO Auto-generated method stub
 	}
 	
 
