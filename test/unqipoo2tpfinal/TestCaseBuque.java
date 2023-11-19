@@ -43,7 +43,6 @@ class TestCaseBuque {
 		verify(estado).esDeparting();
 	}
 	
-<<<<<<< HEAD
 	/*@Test
 	void testEsEstadoOutbound() {
 		estado = mock(Outbound.class);
@@ -60,9 +59,9 @@ class TestCaseBuque {
 		
 <<<<<<< HEAD
 	}*/
-=======
+
 	//}
->>>>>>> 1cedfc799d471b6774fd61bc41139c60deb24e71
+
 	
 	
 	
