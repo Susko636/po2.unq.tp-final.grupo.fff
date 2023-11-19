@@ -17,7 +17,8 @@ public class Consignee extends Cliente {
 		return null;
 	}
 
-	public void ordenDeExporacion(TerminalGestionada unaTerminal,TerminalGestionada terminalSalida, TerminalGestionada terminalLlegada) {
+	@Override
+	public void ordenDeExportacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada) {
 		// TODO Auto-generated method stub
 		
 	}
