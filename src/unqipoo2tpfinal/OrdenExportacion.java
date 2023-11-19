@@ -20,7 +20,27 @@ public class OrdenExportacion extends Orden{
 	}
 	
 	public void contratarServicios(Servicio unServicio) {
-		
+		//hacer.
+	}
+
+	public Chofer getChofer() {
+		return this.chofer;
+	}
+
+	public Camion getCamion() {
+		return this.camion;
+	}
+
+	public TerminalPortuaria getTerminalLlegada() {
+		return this.terminalLlegada;
+	}
+
+	public LocalDate getFechaLlegada() {
+		return this.fechaLlegada;
+	}
+
+	public LocalDate getFechaSalida() {
+		return this.fechaSalida;
 	}
 
 }
