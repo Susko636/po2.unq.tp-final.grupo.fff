@@ -11,9 +11,5 @@ public abstract class Buscador implements Busqueda {
 	@Override
 	public abstract List<Viaje> buscar(List<Viaje> viajes);
 
-	public List<Viaje> getResultadosDeBusqueda() {
-		return this.resultadosDeBusqueda;
-	}
-
 }
 
