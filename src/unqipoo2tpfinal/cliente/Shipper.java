@@ -33,7 +33,7 @@ public class Shipper extends Cliente {
 
 	@Override
 	public void ordenDeExportacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada) {
-		unaTerminal.exportar(terminalLlegada);
+		unaTerminal.exportar(terminalLlegada,this);
 		
 	}
 

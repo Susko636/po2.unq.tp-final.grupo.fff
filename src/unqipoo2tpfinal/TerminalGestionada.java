@@ -19,7 +19,7 @@ public class TerminalGestionada {
 	private List<Container> containers= new ArrayList<Container>();
 	private List<Orden> ordenes;
 	private List<Naviera> navieras;
-
+	
 	
 
 	public TerminalGestionada(int numeroDeTerminal, Double posicion, List<CircuitoMaritimo> circuitos, List<Buque> buques, List<Container> containers) {
@@ -31,13 +31,17 @@ public class TerminalGestionada {
 		this.ordenes = new ArrayList<Orden>();
 	}
 
-	public void exportar(TerminalPortuaria terminalLlegada) {
-		for (Naviera naviera : this.navieras){
-			circuitos.addAll(naviera.pedirCircuitoHacia(terminalLlegada,this));
-		}
-		CircuitoMaritimo unCircuito = this.elegirCircuito(terminalLlegada);
-		/*naviera*/.crearViajeA(terminalLlegada, unCircuito); //la naviera crea el viaje con un buque y la fecha, lo devuelve
-		//armar orden con el viaje entero aca.
+	public void exportar(TerminalPortuaria terminalLlegada, Shipper unShipper) {
+		Naviera unaNaviera = this.navieras.stream().filter(n->n.tieneViajePara(terminalLlegada)).toList().get(0);
+		CircuitoMaritimo unCircuito = unaNaviera.pedirCircuitoHacia(terminalLlegada);
+		this.circuitos.add(unCircuito);
+		Viaje unViaje = unaNaviera.crearViajeA(terminalLlegada, unCircuito); //la naviera crea el viaje con un buque y la fecha, lo devuelve
+		this.ordenes.add(new OrdenExportacion(terminalLlegada, LocalDate.now(), LocalDate.now().plusDays(15), unViaje,unShipper));
+		this.asignarTurno(unShipper, LocalDate.now());
+		this.choferHabilitado.add(unShipper.informarChofer());
+		this.camionHabilitado.add(unShipper.informarCamion());
+		//informar al shipper el turno y que me devuelva el chofer y camion asignado.
+		
 		
 	}	
 	
