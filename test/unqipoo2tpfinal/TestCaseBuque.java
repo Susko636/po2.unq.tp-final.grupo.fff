@@ -22,13 +22,14 @@ class TestCaseBuque {
 	private Buque unBuque;
 	private Viaje unViaje;
 	private TerminalGestionada unaTerminal;
+	private TerminalPortuaria otraTerminal;
 	private EstadoBuque estado;
-	private Double posicionDeTerminal;
 	
 	@BeforeEach
 	public void setUp() {
 		unViaje = mock(Viaje.class);
 		unaTerminal = mock(TerminalGestionada.class);
+		otraTerminal = mock(TerminalPortuaria.class);
 		unBuque = new Buque(unViaje,100d);
 	}
 	
@@ -53,10 +54,7 @@ class TestCaseBuque {
         when(unViaje.getBuqueAsignado()).thenReturn(unBuque);
         when(unaTerminal.getPosicion()).thenReturn(100d);
 
-
-        posicionDeTerminal = unaTerminal.getPosicion();
-
-        unBuque.getEstadoBuque().distanciaHasta(unViaje);;
+        unBuque.getEstadoBuque().distanciaHasta(unViaje);
 
         estado = unBuque.getEstadoBuque();
 
@@ -65,7 +63,25 @@ class TestCaseBuque {
 
     }
 	
-	
+	@Test
+    void testEsEstadoInbound() {
+
+        when(unViaje.getTerminalDeSalida()).thenReturn(unaTerminal);
+        when(unViaje.getTerminalDeLlegada()).thenReturn(otraTerminal);
+        when(unViaje.getBuqueAsignado()).thenReturn(unBuque);
+        when(unaTerminal.getPosicion()).thenReturn(100d);
+        when(otraTerminal.getPosicion()).thenReturn(300d);
+        
+        unBuque.avanzar(5d);
+		unBuque.getEstadoBuque().distanciaHasta(unViaje); //Pasa a estado OutBound :)
+		
+        unBuque.avanzar(155d);
+        unBuque.getEstadoBuque().distanciaHasta(unViaje);
+        
+        //assertEquals(unBuque.getEstadoBuque(), estado);
+        System.out.println(unBuque.getEstadoBuque());
+
+	}	
 
 }
 

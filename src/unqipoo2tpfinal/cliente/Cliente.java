@@ -52,11 +52,7 @@ public abstract class Cliente {
 	public void pagar() {
 		//HACER
 	}
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 79563a2b8544e5bd460e55e8fe32b7ae1bc15dc0
+	
 	public abstract void ordenDeExportacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada);
 
 	public String getNombre() {
