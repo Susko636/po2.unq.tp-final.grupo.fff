@@ -14,10 +14,6 @@ public abstract class Buscador implements Busqueda {
 	public List<Viaje> getResultadosDeBusqueda() {
 		return this.resultadosDeBusqueda;
 	}
-	
-	public void agregarResultado(Viaje viajeResultante) {
-		this.getResultadosDeBusqueda().add(viajeResultante);
-	}
 
 }
 
