@@ -43,7 +43,6 @@ public class Buque {
 
 	public void informarCercanoArrivo(TerminalPortuaria terminalDeLlegada) {
 		terminalDeLlegada.informarCercanoArrivoDe(this);
-		terminalDeLlegada.comenzarTrabajo(this);
 	}
 
 	public void informarSalidaBuque(TerminalGestionada terminalDeSalida) {
@@ -52,7 +51,7 @@ public class Buque {
 
 	public void empezarTrabajo() {
 		this.cambiarAWorking();
-		this.terminarTrabajo();
+		
 	}
 	
 	public void cambiarAWorking() {

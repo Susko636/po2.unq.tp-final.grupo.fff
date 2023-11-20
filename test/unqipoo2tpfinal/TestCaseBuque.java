@@ -23,7 +23,10 @@ class TestCaseBuque {
 	private Viaje unViaje;
 	private TerminalGestionada unaTerminal;
 	private TerminalPortuaria otraTerminal;
+<<<<<<< HEAD
 	private EstadoBuque estado;
+=======
+>>>>>>> 14c2a88cd5bd86879d04b6ddac2762a26ff7785d
 	
 	@BeforeEach
 	public void setUp() {
@@ -31,22 +34,20 @@ class TestCaseBuque {
 		unaTerminal = mock(TerminalGestionada.class);
 		otraTerminal = mock(TerminalPortuaria.class);
 		unBuque = new Buque(unViaje,100d);
+		otraTerminal = mock(TerminalPortuaria.class);
 	}
 	
 	
 	@Test
 	void testEsEstadoDeparting() {
-		EstadoBuque unEstado = unBuque.getEstadoBuque();
 		
-		assertEquals(unBuque.getEstadoBuque(), unEstado);
-		 System.out.println(unBuque.getEstadoBuque());
+		
+		System.out.println(unBuque.getEstadoBuque());
 		
 	}
 	
 	@Test
     void testEsEstadoOutbound() {
-
-        estado = mock(Outbound.class);
 
         unBuque.avanzar(5d);
 
@@ -54,15 +55,20 @@ class TestCaseBuque {
         when(unViaje.getBuqueAsignado()).thenReturn(unBuque);
         when(unaTerminal.getPosicion()).thenReturn(100d);
 
+<<<<<<< HEAD
         unBuque.getEstadoBuque().distanciaHasta(unViaje);
+=======
+        unBuque.getEstadoBuque().distanciaHasta(unViaje);;
+>>>>>>> 14c2a88cd5bd86879d04b6ddac2762a26ff7785d
 
-        estado = unBuque.getEstadoBuque();
-
-        //assertEquals(unBuque.getEstadoBuque(), estado);
         System.out.println(unBuque.getEstadoBuque());
 
     }
 	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 14c2a88cd5bd86879d04b6ddac2762a26ff7785d
 	@Test
     void testEsEstadoInbound() {
 
@@ -80,8 +86,87 @@ class TestCaseBuque {
         
         //assertEquals(unBuque.getEstadoBuque(), estado);
         System.out.println(unBuque.getEstadoBuque());
+<<<<<<< HEAD
 
 	}	
+=======
+}	
+
+
+	
+	@Test
+	void testEsEstadoArrived() {
+		when(unViaje.getTerminalDeSalida()).thenReturn(unaTerminal);
+        when(unViaje.getTerminalDeLlegada()).thenReturn(otraTerminal);
+        when(unViaje.getBuqueAsignado()).thenReturn(unBuque);
+        when(unaTerminal.getPosicion()).thenReturn(100d);
+        when(otraTerminal.getPosicion()).thenReturn(300d);
+        
+        unBuque.avanzar(5d);
+		unBuque.getEstadoBuque().distanciaHasta(unViaje); //Pasa a estado OutBound :)
+		
+        unBuque.avanzar(155d);
+        unBuque.getEstadoBuque().distanciaHasta(unViaje);   // Pasa a estado InBound ;)
+        
+        unBuque.avanzar(40d);
+		unBuque.getEstadoBuque().distanciaHasta(unViaje);
+		
+		System.out.println(unBuque.getEstadoBuque());
+	}
+	
+	@Test
+    void testEsEstadoWorking() {
+		when(unViaje.getTerminalDeSalida()).thenReturn(unaTerminal);
+        when(unViaje.getTerminalDeLlegada()).thenReturn(otraTerminal);
+        when(unViaje.getBuqueAsignado()).thenReturn(unBuque);
+        when(unaTerminal.getPosicion()).thenReturn(100d);
+        when(otraTerminal.getPosicion()).thenReturn(300d);
+        
+        unBuque.avanzar(5d);
+		unBuque.getEstadoBuque().distanciaHasta(unViaje); //Pasa a estado OutBound :)
+		
+        unBuque.avanzar(155d);
+        unBuque.getEstadoBuque().distanciaHasta(unViaje);   // Pasa a estado InBound ;)
+        
+        unBuque.avanzar(40d);
+		unBuque.getEstadoBuque().distanciaHasta(unViaje);   // Pasa a estado Arrived :P
+		
+		unBuque.empezarTrabajo();
+		//unaTerminal.comenzarTrabajo(unBuque);
+
+        System.out.println(unBuque.getEstadoBuque());
+
+    }
+	
+	
+	@Test
+    void testEsEstadoDeWorkingADeparting() {
+		when(unViaje.getTerminalDeSalida()).thenReturn(unaTerminal);
+        when(unViaje.getTerminalDeLlegada()).thenReturn(otraTerminal);
+        when(unViaje.getBuqueAsignado()).thenReturn(unBuque);
+        when(unaTerminal.getPosicion()).thenReturn(100d);
+        when(otraTerminal.getPosicion()).thenReturn(300d);
+        
+        unBuque.avanzar(5d);
+		unBuque.getEstadoBuque().distanciaHasta(unViaje); //Pasa a estado OutBound :)
+		
+        unBuque.avanzar(155d);
+        unBuque.getEstadoBuque().distanciaHasta(unViaje);   // Pasa a estado InBound ;)
+        
+        unBuque.avanzar(40d);
+		unBuque.getEstadoBuque().distanciaHasta(unViaje);   // Pasa a estado Arrived :P
+		
+		unBuque.empezarTrabajo();							// Pasa a estado Working :D
+		//unaTerminal.comenzarTrabajo(unBuque);
+		
+		unBuque.terminarTrabajo();
+		//unaTerminal.depart(unBuque)						//Termina en estado Departing :*
+		
+        System.out.println(unBuque.getEstadoBuque());
+
+    }
+	
+>>>>>>> 14c2a88cd5bd86879d04b6ddac2762a26ff7785d
 
 }
 

@@ -12,6 +12,7 @@ public class Orden {
 	private Chofer choferAsignado;
 	private Camion camionAsignado;
 	private List<Servicio> servicios;	
+	private TerminalGestionada unaTerminal;
 
 	public void setChofer(Chofer chofer) {
 		this.choferAsignado = chofer;
@@ -27,6 +28,14 @@ public class Orden {
 	
 	public Chofer getChofer() {
 		return this.choferAsignado;
+	}
+
+	public List<Servicio> getServicios() {
+		return this.servicios;
+	}
+
+	public TerminalGestionada getUnaTerminal() {
+		return unaTerminal;
 	}
 	
 }

@@ -33,7 +33,7 @@ public class Shipper extends Cliente {
 
 	@Override
 	public void ordenDeExportacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada) {
-		// TODO Auto-generated method stub
+		unaTerminal.exportar(terminalLlegada,this);
 		
 	}
 

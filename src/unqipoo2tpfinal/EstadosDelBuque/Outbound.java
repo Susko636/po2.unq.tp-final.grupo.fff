@@ -7,10 +7,6 @@ import unqipoo2tpfinal.Viaje;
 public class Outbound implements EstadoBuque{
 
 
-	public EstadoBuque getEstado(Buque unBuque) {
-		return unBuque.getEstadoBuque();
-	}
-
 	@Override
 	public void distanciaHasta(Viaje unViaje) {
 		Buque buque = unViaje.getBuqueAsignado();

@@ -7,6 +7,7 @@ public class Arrived implements EstadoBuque{
 	
 	@Override
 	public void distanciaHasta(Viaje unViaje) {
+		unViaje.getTerminalDeSalida().comenzarTrabajo(unViaje.getBuqueAsignado());
 		//queda a la espera de que la terminal le diga que pase a working
 	}
 
