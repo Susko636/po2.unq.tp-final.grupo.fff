@@ -65,6 +65,7 @@ class TestCaseViaje {
 		viaje.setFechaDeLlegada();
 		
 		assertEquals(viaje.getFechaLlegada(), fechaInicio.plusDays(1));
+		System.out.println(viaje.getFechaLlegada().toString());
 	}
 	
 }

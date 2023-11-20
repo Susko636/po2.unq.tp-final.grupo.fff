@@ -4,17 +4,13 @@ import java.time.LocalDate;
 
 public class TerminalPortuaria {
 	
-	private int numeroDeTerminal;
+	private String nombreTerminal;
 	private Double posicion;
 	
-	public TerminalPortuaria(int numeroDeTerminal, Double posicion) {
+	public TerminalPortuaria(String nombreDeTerminal, Double posicion) {
 		
-		this.numeroDeTerminal = numeroDeTerminal;
+		this.nombreTerminal = nombreDeTerminal;
 		this.posicion = posicion;
-	}
-
-	public int getNumeroDeTerminal() {
-		return numeroDeTerminal;
 	}
 
 	public Double getPosicion() {
@@ -28,11 +24,13 @@ public class TerminalPortuaria {
 	public void informarCercanoArrivoDe(Buque unBuque) {
 		//Envia E-Mail a todos los consignee que esten esperando este buque
 	}
-	
-	
 
 	public void recibirFechaDeLlegadaDeViaje(LocalDate fechaLlegada) {
 		//informar a shipper o consignee la fecha de llegada de su carga.
+	}
+
+	public String getNombre() {
+		return this.nombreTerminal;
 	}
 	
 	
