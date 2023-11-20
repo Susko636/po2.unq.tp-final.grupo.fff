@@ -11,12 +11,11 @@ public class PuertoDestino extends BuscadorSimple {
 	public PuertoDestino(String nombrePuerto) {
 		super();
 		this.valorBuscado = nombrePuerto;
-		this.resultadosDeBusqueda = new ArrayList<Viaje>();
 	}
 	
 	@Override
 	public List<Viaje> buscar(List<Viaje> viajes) {
-		List<Viaje> resultadoDeBusqueda = this.getResultadosDeBusqueda();
+		List<Viaje> resultadoDeBusqueda = new ArrayList<Viaje>();
 		resultadoDeBusqueda = 
 				viajes.stream().filter(v->v.getTerminalDeLlegada().getNombre().equals(this.getValorBuscado()))
 				.toList();

@@ -11,12 +11,11 @@ public class FechaDeLlegada extends BuscadorSimple {
 	public FechaDeLlegada(String fechaDeLlegada) {
 		super();
 		this.valorBuscado = fechaDeLlegada;
-		this.resultadosDeBusqueda = new ArrayList<Viaje>();
 	}
  
 	@Override
 	public List<Viaje> buscar(List<Viaje> viajes) {
-		List<Viaje> resultadoDeBusqueda = this.getResultadosDeBusqueda();
+		List<Viaje> resultadoDeBusqueda = new ArrayList<Viaje>();
 		resultadoDeBusqueda = 
 				viajes.stream().filter(v->v.getFechaLlegada().toString().equals(this.getValorBuscado()))
 				.toList();
