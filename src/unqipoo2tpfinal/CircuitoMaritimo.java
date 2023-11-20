@@ -1,5 +1,6 @@
 package unqipoo2tpfinal;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +37,18 @@ public class CircuitoMaritimo {
 
 	public String getMessage() {
 		return "No coinciden las terminales";
+	}
+
+
+	public Double cantidadDeTerminalesIntermedias(TerminalPortuaria terminalLlegada) {
+		List<Tramo> tramosARecorrer = this.getTramos();
+		Double cantTerminal = 0d;
+		int i = 0;
+		while(tramosARecorrer.get(i).getTerminalDeLlegada() != terminalLlegada) {
+			cantTerminal ++;
+			i++;
+		}
+		return cantTerminal;
 	}
 	
 } 
