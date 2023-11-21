@@ -6,6 +6,7 @@ import java.util.List;
 
 import unqipoo2tpfinal.TerminalGestionada;
 import unqipoo2tpfinal.TerminalPortuaria;
+import unqipoo2tpfinal.naviera.BuscadorDeMejorCircuito;
 import unqipoo2tpfinal.orden.Orden;
 import unqipoo2tpfinal.orden.OrdenImportacion;
 
@@ -16,8 +17,8 @@ public class Consignee extends Cliente {
 	private LocalDate fechaTurno;
 	private LocalTime horaTurno;
 	
-	public Consignee(String nombre, Carga carga) {
-		super(nombre, carga);
+	public Consignee(String nombre, Carga carga, BuscadorDeMejorCircuito criterioDeMejor) {
+		super(nombre, carga, criterioDeMejor);
 	}
 
 	public List<OrdenImportacion> getOrdenRealizadas(){

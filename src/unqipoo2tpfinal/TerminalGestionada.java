@@ -12,6 +12,7 @@ import unqipoo2tpfinal.cliente.Shipper;
 import unqipoo2tpfinal.container.Container;
 import unqipoo2tpfinal.empresaTransportista.Camion;
 import unqipoo2tpfinal.empresaTransportista.Chofer;
+import unqipoo2tpfinal.naviera.Naviera;
 import unqipoo2tpfinal.orden.Orden;
 import unqipoo2tpfinal.orden.OrdenExportacion;
 import unqipoo2tpfinal.orden.OrdenImportacion;
@@ -44,7 +45,8 @@ public class TerminalGestionada {
 
 	public void exportar(TerminalPortuaria terminalLlegada, Shipper unShipper) {
 		Naviera unaNaviera = this.navieraQueTieneViaje(terminalLlegada);
-		CircuitoMaritimo unCircuito = unaNaviera.pedirCircuitoHacia(terminalLlegada);
+		unaNaviera.asignarCriterioDeBusqueda(unShipper.getCriterioDeMejor());
+		CircuitoMaritimo unCircuito = unaNaviera.pedirMejorCircuitoHacia(terminalLlegada);
 		this.agregarCircuito(unCircuito);
 		
 		Viaje unViaje = unaNaviera.crearViajeA(terminalLlegada, unCircuito,this, LocalDate.now()); //la naviera crea el viaje con un buque y la fecha, lo devuelve
@@ -58,8 +60,6 @@ public class TerminalGestionada {
 				
 	}	
 	
-	
-
 	public void importar(TerminalPortuaria terminalLlegada, Consignee consignee) {
 		OrdenImportacion unaOrden = new OrdenImportacion(this,LocalDate.now(), LocalTime.now(), consignee);
 		this.informarFechaYHoraDeLlegada(consignee, LocalDate.now(), LocalTime.now(), unaOrden);

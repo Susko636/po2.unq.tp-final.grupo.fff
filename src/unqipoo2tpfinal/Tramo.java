@@ -24,5 +24,10 @@ public class Tramo {
 		return this.terminalDeLlegada;
 	}
 	
+	public Double precioPorTramo() {
+		Double ubicacion1 = this.terminalDeSalida.getPosicion();
+		Double ubicacion2 = this.terminalDeLlegada.getPosicion();
+		return Math.abs(ubicacion2 - ubicacion1) * 100d;
+	}	
 
 }

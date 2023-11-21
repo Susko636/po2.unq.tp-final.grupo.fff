@@ -6,32 +6,36 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import unqipoo2tpfinal.cliente.Cliente;
+import unqipoo2tpfinal.cliente.Carga;
 import unqipoo2tpfinal.cliente.Shipper;
 import unqipoo2tpfinal.empresaTransportista.EmpresaTransportista;
+import unqipoo2tpfinal.naviera.BuscadorDeMejorCircuito;
+import unqipoo2tpfinal.orden.OrdenExportacion;
 
 class TestCaseShippper {
 	
-	private Cliente shipper;
+	private Shipper shipper;
 	private TerminalGestionada unaTerminal;
 	private TerminalPortuaria terminalLlegada;
-	private EmpresaTransportista empresa;
+	private Carga carga;
+	private BuscadorDeMejorCircuito criterio;
 		
 	
 	@BeforeEach
 	void setUp() {
-		shipper = new Shipper("sho");
+		criterio = mock(BuscadorDeMejorCircuito.class);
+		carga = Carga.BASICO;
+		shipper = new Shipper("sho", carga, criterio);
 		unaTerminal = mock(TerminalGestionada.class);
 		terminalLlegada = mock(TerminalPortuaria.class);
-		empresa = mock(EmpresaTransportista.class);
 	}
 	
 	@Test
-	void test() {
+	void testUnShipperPuedeRealizarUnaOrdenDeExportacion() {
 		
-		shipper.contratarEmpresa(empresa);		
 		shipper.ordenDeExportacion(unaTerminal, terminalLlegada);
-		assertTrue(shipper.getOrdenesRealizadas().size() == 1);
+		verify(unaTerminal).exportar(terminalLlegada, shipper);
+		
 	}
 
 	

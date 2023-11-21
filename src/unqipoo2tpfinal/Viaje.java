@@ -28,8 +28,9 @@ public class Viaje {
 		this.terminalDeLlegada.recibirFechaDeLlegadaDeViaje(this.fechaLlegada);
 	}
 	
-	public void precio() {
-		//hacer.
+	public Double precio() {
+		Double precioTotal = this.recorridoDelViaje().stream().mapToDouble(t->t.precioPorTramo()).sum();
+		return precioTotal;
 	}
 	
 	public List<Tramo> recorridoDelViaje() {
@@ -46,7 +47,7 @@ public class Viaje {
 	
 	public int calcularFechaDeLlegada() {
 		//se asume que el tiempo de recorrido esta divido en horas y la parte fraccionaria en minutos.
-		Double horas =this.recorridoDelViaje().stream().mapToDouble(t-> t.getTiempoDeRecorrido()).sum();
+		Double horas = this.recorridoDelViaje().stream().mapToDouble(t-> t.getTiempoDeRecorrido()).sum();
 		return horas.intValue()/24; 
 	}
 	

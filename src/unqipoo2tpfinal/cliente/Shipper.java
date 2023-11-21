@@ -6,6 +6,7 @@ import java.util.List;
 
 import unqipoo2tpfinal.TerminalGestionada;
 import unqipoo2tpfinal.TerminalPortuaria;
+import unqipoo2tpfinal.naviera.BuscadorDeMejorCircuito;
 import unqipoo2tpfinal.orden.OrdenExportacion;
 
 public class Shipper extends Cliente {
@@ -16,8 +17,8 @@ public class Shipper extends Cliente {
 	
 	
 	
-	public Shipper(String nombre, Carga carga) {
-		super(nombre,carga);
+	public Shipper(String nombre, Carga carga, BuscadorDeMejorCircuito criterioDeMejor) {
+		super(nombre,carga,criterioDeMejor);
 		this.ordenesRealizadas = new ArrayList<OrdenExportacion>();
 	}
 

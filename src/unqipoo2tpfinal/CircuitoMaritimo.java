@@ -49,6 +49,28 @@ public class CircuitoMaritimo {
 		}
 		return cantTerminal;
 	}
+	
+	public Double precioHasta(TerminalPortuaria terminalLlegada) {
+		List<Tramo> tramosARecorrer = this.getTramos();
+		Double precioTotal = 0d;
+		int i = 0;
+		while(tramosARecorrer.get(i).getTerminalDeLlegada() != terminalLlegada) {
+			precioTotal += tramosARecorrer.get(i).precioPorTramo();
+			i++;
+		}
+		return precioTotal;
+	}
+	
+	public Double tiempoHasta(TerminalPortuaria terminalLlegada) {
+		List<Tramo> tramosARecorrer = this.getTramos();
+		Double tiempoTotal = 0d;
+		int i = 0;
+		while(tramosARecorrer.get(i).getTerminalDeLlegada() != terminalLlegada) {
+			tiempoTotal += tramosARecorrer.get(i).getTiempoDeRecorrido();
+			i++;
+		}
+		return tiempoTotal;
+	}
 
 
 	public boolean existeAlgunTramoCon(TerminalPortuaria terminalLlegada) {

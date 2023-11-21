@@ -9,12 +9,14 @@ import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;
 
+import unqipoo2tpfinal.cliente.Carga;
 import unqipoo2tpfinal.cliente.Cliente;
 import unqipoo2tpfinal.cliente.Consignee;
 import unqipoo2tpfinal.cliente.Shipper;
 import unqipoo2tpfinal.empresaTransportista.Camion;
 import unqipoo2tpfinal.empresaTransportista.Chofer;
 import unqipoo2tpfinal.empresaTransportista.EmpresaTransportista;
+import unqipoo2tpfinal.naviera.BuscadorDeMejorCircuito;
 import unqipoo2tpfinal.orden.Orden;
 
 class TestCaseCliente {
@@ -27,11 +29,15 @@ class TestCaseCliente {
 	private Chofer chofer;
 	private Camion camion;
 	private Orden orden;
+	private Carga carga;
+	private BuscadorDeMejorCircuito criterio;
 	
 	@BeforeEach
 	public void setUp() {
-		shipper  = new Shipper("cliente 1");
-		consignee  = new Consignee("cliente 2");
+		
+		criterio = mock(BuscadorDeMejorCircuito.class);
+		shipper  = new Shipper("cliente 1", carga, criterio);
+		consignee  = new Consignee("cliente 2", carga, criterio);
 		choferes = new ArrayList<Chofer>();
 		camiones = new ArrayList<Camion>();
 		orden = mock(Orden.class);
@@ -46,7 +52,9 @@ class TestCaseCliente {
 	
 	@Test
 	void testCreacionDeShipper() {
+		
 		assertEquals(shipper.getNombre(), "cliente 1");
+		
 	}
 	
 	@Test
