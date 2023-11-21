@@ -10,7 +10,7 @@ public class Reefer extends Container{
 	}
 
 	public Double getConsumo() {
-		return consumo;
+		return this.consumo;
 	}
 	
 	

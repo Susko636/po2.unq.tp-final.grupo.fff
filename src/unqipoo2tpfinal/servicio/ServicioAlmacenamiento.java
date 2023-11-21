@@ -2,10 +2,10 @@ package unqipoo2tpfinal.servicio;
 
 public class ServicioAlmacenamiento implements Servicio{
 
+		
 	@Override
-	public double precio(Servicio unServicio) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double precio() {
+		return 10000d;
 	}
 
 	@Override

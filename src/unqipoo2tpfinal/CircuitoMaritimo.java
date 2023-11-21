@@ -50,5 +50,10 @@ public class CircuitoMaritimo {
 		}
 		return cantTerminal;
 	}
+
+
+	public boolean existeAlgunTramoCon(TerminalPortuaria terminalLlegada) {
+		return this.getTramos().stream().anyMatch(t->t.getTerminalDeLlegada().equals(terminalLlegada));
+	}
 	
 } 

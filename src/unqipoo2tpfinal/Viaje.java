@@ -28,8 +28,8 @@ public class Viaje {
 		this.terminalDeLlegada.recibirFechaDeLlegadaDeViaje(this.fechaLlegada);
 	}
 	
-	public void pagar() {
-		
+	public void precio() {
+		//hacer.
 	}
 	
 	public List<Tramo> recorridoDelViaje() {

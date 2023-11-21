@@ -1,29 +1,27 @@
 package unqipoo2tpfinal.cliente;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import unqipoo2tpfinal.TerminalGestionada;
 import unqipoo2tpfinal.TerminalPortuaria;
-import unqipoo2tpfinal.empresaTransportista.Camion;
-import unqipoo2tpfinal.empresaTransportista.Chofer;
-import unqipoo2tpfinal.orden.Orden;
 import unqipoo2tpfinal.orden.OrdenExportacion;
-import unqipoo2tpfinal.servicio.Servicio;
 
 public class Shipper extends Cliente {
 	
-	private Orden ordenDeExportacion;
+	private OrdenExportacion ordenDeExportacion;
 	private List<OrdenExportacion> ordenesRealizadas;
+	private LocalDate turno;
 	
 	
 	
-	public Shipper(String nombre) {
-		super(nombre);
+	public Shipper(String nombre, Carga carga) {
+		super(nombre,carga);
 		this.ordenesRealizadas = new ArrayList<OrdenExportacion>();
 	}
 
-	public Orden getOrdenDeExportacion() {
+	public OrdenExportacion getOrdenDeExportacion() {
 		return this.ordenDeExportacion;
 	}
 
@@ -31,11 +29,38 @@ public class Shipper extends Cliente {
 		return this.ordenesRealizadas;
 	}
 
-	@Override
+	
 	public void ordenDeExportacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada) {
-		unaTerminal.exportar(terminalLlegada,this);
+		unaTerminal.exportar(terminalLlegada,this);		
+	}
+
+
+	public LocalDate getTurno() {
+		return this.turno;
+	}
+
+	public void setTurno(LocalDate turno) {
+		this.turno = turno;
+	}
+
+	public void guardarOrden(OrdenExportacion unaOrden) {
+		this.ordenesRealizadas.add(unaOrden);
+		this.notificarChoferYCamion(unaOrden);
 		
 	}
+
+	public Carga getCarga() {
+		return this.carga;
+	}
+
+	@Override
+	public void pagar() {
+		this.getOrdenDeExportacion().getViaje().precio(); 
+		this.getOrdenDeExportacion().calcularPrecioPorServicios();
+	}
+
+
+	
 
 
 	

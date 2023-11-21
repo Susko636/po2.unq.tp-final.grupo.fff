@@ -1,26 +1,25 @@
 package unqipoo2tpfinal.cliente;
 
-import java.util.List;
 
-import unqipoo2tpfinal.TerminalGestionada;
-import unqipoo2tpfinal.TerminalPortuaria;
 import unqipoo2tpfinal.empresaTransportista.Camion;
 import unqipoo2tpfinal.empresaTransportista.Chofer;
 import unqipoo2tpfinal.empresaTransportista.EmpresaTransportista;
 import unqipoo2tpfinal.orden.Orden;
-import unqipoo2tpfinal.orden.OrdenExportacion;
 
 public abstract class Cliente {
 
 	protected String nombre;
 	protected Camion camionAsignado;
 	protected Chofer choferAsignado;
+	protected Carga carga;
 	
-	public Cliente(String nombre) {
+	public Cliente(String nombre, Carga carga) {
 		super();
 		this.nombre = nombre;
+		this.carga = carga;
 	}
 
+	
 	public Camion getCamionAsignado() {
 		return this.camionAsignado;
 	}
@@ -42,22 +41,29 @@ public abstract class Cliente {
 		this.setCamionAsignado(empresa.asignarCamion());
 	}
 
-	public abstract List<OrdenExportacion> getOrdenesRealizadas();
 
 	public void notificarChoferYCamion(Orden orden) {
 		orden.setChofer(this.getChoferAsignado());
 		orden.setCamion(this.getCamionAsignado());
 	}
 	
-	public void pagar() {
-		//HACER
+	public abstract void pagar(); 
+	
+	
+	
+	public Carga getCarga() {
+		return this.carga;
 	}
-
-
-	public abstract void ordenDeExportacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada);
-
+	
 	public String getNombre() {
 		return this.nombre;
 	}
-	
+
+	public Chofer informarChofer() {
+		return this.getChoferAsignado();
+	}
+
+	public Camion informarCamion() {
+		return this.getCamionAsignado();
+	}
 }

@@ -3,9 +3,10 @@ package unqipoo2tpfinal.orden;
 import java.time.LocalDate;
 
 import unqipoo2tpfinal.TerminalPortuaria;
+import unqipoo2tpfinal.Viaje;
+import unqipoo2tpfinal.cliente.Shipper;
 import unqipoo2tpfinal.empresaTransportista.Camion;
 import unqipoo2tpfinal.empresaTransportista.Chofer;
-import unqipoo2tpfinal.servicio.Servicio;
 
 public class OrdenExportacion extends Orden{
 
@@ -14,16 +15,18 @@ public class OrdenExportacion extends Orden{
 	private TerminalPortuaria terminalLlegada;
 	private LocalDate fechaLlegada;
 	private LocalDate fechaSalida;
+	private Viaje viaje;
+	private Shipper duenio;
 
-	public OrdenExportacion(TerminalPortuaria terminalLlegada, LocalDate fechaLlegada, LocalDate fechaSalida) {		
+	public OrdenExportacion(TerminalPortuaria terminalLlegada, LocalDate fechaLlegada, LocalDate fechaSalida, Viaje unViaje, Shipper unShipper) {		
 		this.terminalLlegada = terminalLlegada;
 		this.fechaLlegada = fechaLlegada;
 		this.fechaSalida = fechaSalida;
+		this.viaje = unViaje;
+		this.duenio = unShipper;
 	}
 	
-	public void contratarServicios(Servicio unServicio) {
-		//hacer.
-	}
+
 
 	public Chofer getChofer() {
 		return this.chofer;
@@ -43,6 +46,14 @@ public class OrdenExportacion extends Orden{
 
 	public LocalDate getFechaSalida() {
 		return this.fechaSalida;
+	}
+
+	public Viaje getViaje() {
+		return this.viaje;
+	}
+
+	public Shipper getDuenio() {
+		return this.duenio;
 	}
 
 }
