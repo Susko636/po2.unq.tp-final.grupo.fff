@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import unqipoo2tpfinal.TerminalGestionada;
+import unqipoo2tpfinal.Viaje;
 import unqipoo2tpfinal.cliente.Consignee;
 import unqipoo2tpfinal.empresaTransportista.Camion;
 import unqipoo2tpfinal.empresaTransportista.Chofer;
@@ -17,13 +18,12 @@ public class OrdenImportacion extends Orden{
 	private Chofer chofer;
 	private Camion camion;
 	private TerminalGestionada terminalDestino;
-	private Consignee duenio;
 
-	public OrdenImportacion(TerminalGestionada terminalDestino, LocalDate fecha, LocalTime hora, Consignee consignee) {		
+	public OrdenImportacion(Viaje unViaje, TerminalGestionada terminalDestino, LocalDate fecha, LocalTime hora, Consignee consignee) {	
+		super(unViaje,consignee);
 		this.terminalDestino = terminalDestino;
 		this.fechaLlegada = fecha;
 		this.horaLlegada = hora;
-		this.duenio = consignee;
 	}
 	
 
@@ -56,10 +56,6 @@ public class OrdenImportacion extends Orden{
 	}
 
 
-	public Consignee getDuenio() {
-		return this.duenio;
-	}
-	
 	
 
 }

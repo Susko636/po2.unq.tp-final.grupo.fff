@@ -41,7 +41,7 @@ public class Buque {
 		this.posicionActual += i;
 	}
 
-	public void informarCercanoArrivo(TerminalPortuaria terminalDeLlegada) {
+	public void informarCercanoArrivo(TerminalGestionada terminalDeLlegada) {
 		terminalDeLlegada.informarCercanoArrivoDe(this);
 	}
 

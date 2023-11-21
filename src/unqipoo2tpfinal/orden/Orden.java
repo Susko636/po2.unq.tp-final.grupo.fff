@@ -2,7 +2,9 @@ package unqipoo2tpfinal.orden;
 
 import java.util.List;
 
-import unqipoo2tpfinal.TerminalGestionada;
+import unqipoo2tpfinal.TerminalPortuaria;
+import unqipoo2tpfinal.Viaje;
+import unqipoo2tpfinal.cliente.Cliente;
 import unqipoo2tpfinal.container.Container;
 import unqipoo2tpfinal.empresaTransportista.Camion;
 import unqipoo2tpfinal.empresaTransportista.Chofer;
@@ -16,7 +18,15 @@ public class Orden {
 	private Chofer choferAsignado;
 	private Camion camionAsignado;
 	private List<Servicio> servicios;	
-	private TerminalGestionada unaTerminal;
+	private TerminalPortuaria unaTerminal;
+	private Viaje viaje;
+	private Cliente duenio;
+
+	protected Orden( Viaje viaje, Cliente duenio) {
+		super();
+		this.viaje = viaje;
+		this.duenio = duenio;
+	}
 
 	public void setChofer(Chofer chofer) {
 		this.choferAsignado = chofer;
@@ -38,11 +48,14 @@ public class Orden {
 		return this.servicios;
 	}
 
-	public TerminalGestionada getUnaTerminal() {
+	public TerminalPortuaria getUnaTerminal() {
 		return unaTerminal;
 	}
 	
-
+	public Viaje getViaje() {
+		return this.viaje;
+	}
+	
 	public void serviciosPara(Container container) {
 		this.registrarServicio(new ServicioLavado());
 		this.registrarServicio(new ServicioPesado());
@@ -56,6 +69,14 @@ public class Orden {
 	
 	public void registrarServicio(Servicio servicio) {
 		this.getServicios().add(servicio);
+	}
+
+	public Cliente getDuenio() {
+		return duenio;
+	}
+
+	public void enviarMail(String string, Cliente duenio2) {
+		duenio.recibirMensaje(string);
 	}
 	
 }

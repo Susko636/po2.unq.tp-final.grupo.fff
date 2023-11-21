@@ -14,6 +14,7 @@ public abstract class Cliente {
 	protected Chofer choferAsignado;
 	protected Carga carga;
 	protected BuscadorDeMejorCircuito criterioDeMejorCircuito;
+	private String buzon;
 	
 	public Cliente(String nombre, Carga carga, BuscadorDeMejorCircuito mejorCircuito) {
 		super();
@@ -74,5 +75,16 @@ public abstract class Cliente {
 
 	public Camion informarCamion() {
 		return this.getCamionAsignado();
+	}
+
+
+	public String getBuzon() {
+		return buzon;
+	}
+
+
+	public void recibirMensaje(String string) {
+		this.buzon=string;
+		
 	}
 }

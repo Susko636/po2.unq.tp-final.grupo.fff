@@ -60,16 +60,23 @@ public class TerminalGestionada {
 				
 	}	
 	
-	public void importar(TerminalPortuaria terminalLlegada, Consignee consignee) {
-		OrdenImportacion unaOrden = new OrdenImportacion(this,LocalDate.now(), LocalTime.now(), consignee);
+	public void importar(TerminalPortuaria terminalSalida, Consignee consignee) {
+		Naviera unaNaviera = this.navieraQueTieneViaje(terminalSalida);
+		unaNaviera.asignarCriterioDeBusqueda(consignee.getCriterioDeMejor());
+		CircuitoMaritimo unCircuito = unaNaviera.pedirMejorCircuitoHacia(terminalSalida);
+		this.agregarCircuito(unCircuito);
+		
+		Viaje unViaje = unaNaviera.crearViajeA(terminalSalida, unCircuito,this, LocalDate.now());
+		OrdenImportacion unaOrden = new OrdenImportacion(unViaje,this,LocalDate.now(), LocalTime.now(), consignee);
+		
 		this.informarFechaYHoraDeLlegada(consignee, LocalDate.now(), LocalTime.now(), unaOrden);
 		this.getOrdenes().add(unaOrden);
 		this.serviciosPara(consignee.getCarga(), unaOrden);
 		this.agregarChoferHabilitado(unaOrden);
 		this.agregarCamionHabilitado(unaOrden);		
 		
+		//revisar posible template en orden.
 	}
-	
 	
 	private void serviciosPara(Carga carga, Orden unaOrden) {
 		this.aplicarServicios(carga.getContainer(), unaOrden);
@@ -148,10 +155,14 @@ public class TerminalGestionada {
 
 	
 	public void informarSalidaDe(Buque unBuque) {
-		//Envia E-Mail a todos los Shippers cuyas órdenes de exportacion esten asociadas al viaje, diciendo que su carga salio de la terminal
+		//precond siempre existe un buque asignado.
+		List<Orden> ordenes = this.getOrdenes().stream().filter(o-> o.getViaje().getBuqueAsignado().equals(unBuque)).toList();
+		ordenes.stream().forEach(o->o.enviarMail("Tu buque esta en viaje a destino", o.getDuenio()));
+
 	}
 	public void informarCercanoArrivoDe(Buque unBuque) {
-		//Envia E-Mail a todos los consignee que esten esperando este buque
+		List<Orden> ordenes = this.getOrdenes().stream().filter(o-> o.getViaje().getBuqueAsignado().equals(unBuque)).toList();
+		ordenes.stream().forEach(o->o.enviarMail("Tu buque esta cercano a arrivar", o.getDuenio()));
 	}
 	
 	public Double getPosicion() {
@@ -184,9 +195,3 @@ public class TerminalGestionada {
 	
 
 }
-
-//mensaje directo exportar un tipo de container
-
-
-
-//mejor viaje es el q tiene menos terminal intermedias.
