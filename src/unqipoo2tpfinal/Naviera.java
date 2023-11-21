@@ -1,10 +1,8 @@
 package unqipoo2tpfinal;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-import unqipoo2tpfinal.empresaTransportista.Chofer;
 
 public class Naviera {
 

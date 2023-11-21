@@ -55,6 +55,8 @@ public abstract class Cliente {
 		return this.carga;
 	}
 	
+
+
 	public String getNombre() {
 		return this.nombre;
 	}

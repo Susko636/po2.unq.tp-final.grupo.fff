@@ -65,6 +65,8 @@ public class Consignee extends Cliente {
 	}
 
 	
+
+	
 	
 
 }

@@ -49,6 +49,7 @@ public class Shipper extends Cliente {
 		
 	}
 
+
 	public Carga getCarga() {
 		return this.carga;
 	}
@@ -59,13 +60,6 @@ public class Shipper extends Cliente {
 		this.getOrdenDeExportacion().calcularPrecioPorServicios();
 	}
 
-
-	
-
-
-	
-
-	
 
 }
 

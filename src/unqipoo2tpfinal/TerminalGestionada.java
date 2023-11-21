@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import unqipoo2tpfinal.buscador.Busqueda;
 import unqipoo2tpfinal.cliente.Carga;
 import unqipoo2tpfinal.cliente.Consignee;
 import unqipoo2tpfinal.cliente.Shipper;
@@ -26,6 +27,7 @@ public class TerminalGestionada {
 	private List<Naviera> navieras;
 	private List<Chofer> choferHabilitado;
 	private List<Camion> camionHabilitado;
+	private Busqueda buscador;
 	
 	
 
@@ -166,6 +168,10 @@ public class TerminalGestionada {
 
 	public List<Container> getContainers() {
 		return this.containers;
+	}
+
+	public Busqueda getBuscador() {
+		return this.buscador;
 	}
 
 	
