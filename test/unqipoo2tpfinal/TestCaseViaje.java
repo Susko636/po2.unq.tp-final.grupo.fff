@@ -2,6 +2,7 @@ package unqipoo2tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
@@ -44,15 +45,44 @@ class TestCaseViaje {
 	
 	@Test 
 	public void testDeCreacionDeViaje() { 
+		
 		assertEquals(viaje.getBuqueAsignado(), buque);
 		assertEquals(viaje.getTerminalDeSalida(), terminalDeSalida);
 		assertEquals(viaje.getTerminalDeLlegada(), terminalDeLlegadaViaje);
 		assertEquals(viaje.getCircuito(), circuito);
 		assertEquals(viaje.getFechaSalida(), fechaInicio);
+		
+	}
+	
+	@Test 
+	public void testUnViajeInformaDeSuLlegada() {
+		
+		viaje.informar();
+		
+		verify(terminalDeLlegadaViaje).recibirFechaDeLlegadaDeViaje(viaje.getFechaLlegada());
+		
+	}
+	
+	@Test
+	public void testDeUnViajeSeSabeSuPrecio() {
+		
+		when(tramo1.precioPorTramo()).thenReturn(100d);
+		when(tramo2.precioPorTramo()).thenReturn(150d);
+		when(tramo3.precioPorTramo()).thenReturn(90d);
+		
+		when(tramo1.getTerminalDeLlegada()).thenReturn(terminalDeLlegadaTramo1);
+		when(tramo2.getTerminalDeLlegada()).thenReturn(terminalDeLlegadaTramo2);
+		when(tramo3.getTerminalDeLlegada()).thenReturn(terminalDeLlegadaViaje);
+		
+		when(circuito.getTramos()).thenReturn(tramos);
+		
+		assertEquals(viaje.precio(), 340d);
+		
 	}
 	
 	@Test
 	public void testUnViajeCalculaSuFechaDeLlegada() {
+		
 		when(tramo1.getTiempoDeRecorrido()).thenReturn(8d);
 		when(tramo2.getTiempoDeRecorrido()).thenReturn(6d);
 		when(tramo3.getTiempoDeRecorrido()).thenReturn(12d);

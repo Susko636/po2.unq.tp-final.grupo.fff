@@ -27,11 +27,20 @@ class TestCaseTramo {
 	}
 	
 	@Test
-	void testTieneTiempoDeRecorridoDos() {
+	void testTieneTiempoDeRecorridos() {
 		
 		Double tiempoTramo = unTramo.getTiempoDeRecorrido();
 		
 		assertEquals(tiempoTramo, this.tiempoDeRecorrido);
+
+	}
+	
+	@Test
+	void testTienePrecioPorRecorridos() {
+		
+		Double precioTramo = unTramo.precioPorTramo();
+		
+		assertEquals(precioTramo, this.tiempoDeRecorrido);
 
 	}
 	
