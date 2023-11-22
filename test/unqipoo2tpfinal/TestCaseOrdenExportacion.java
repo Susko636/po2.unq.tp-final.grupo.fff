@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,22 @@ class TestCaseOrdenExportacion {
 		viaje = mock(Viaje.class);
 		shipper = mock(Shipper.class);
 		fechaLlegada = LocalDate.now();
-		fechaS
-		orden = new OrdenExportacion()
+		fechaSalida = LocalDate.now();
+		orden = new OrdenExportacion(terminalLlegada, fechaLlegada, fechaSalida, viaje, shipper);
+	}
+	
+	@Test
+	void TestDeCreacion() {
+		
+		orden.setCamion(camion);
+		orden.setChofer(chofer);
+		
+		assertEquals(orden.getCamion(), camion);
+		assertEquals(orden.getChofer(), chofer);
+		assertEquals(orden.getFechaLlegada(),fechaLlegada);
+		assertEquals(orden.getFechaSalida(),fechaSalida);
+		assertEquals(orden.getDuenio(),shipper);
+		assertEquals(orden.getViaje(),viaje);
+		assertEquals(orden.getTerminalLlegada(),terminalLlegada);
 	}
 }

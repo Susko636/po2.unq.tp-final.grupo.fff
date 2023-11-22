@@ -9,7 +9,7 @@ import unqipoo2tpfinal.buscador.Busqueda;
 import unqipoo2tpfinal.cliente.Carga;
 import unqipoo2tpfinal.cliente.Consignee;
 import unqipoo2tpfinal.cliente.Shipper;
-import unqipoo2tpfinal.container.Container;
+import unqipoo2tpfinal.container.Conteiner;
 import unqipoo2tpfinal.empresaTransportista.Camion;
 import unqipoo2tpfinal.empresaTransportista.Chofer;
 import unqipoo2tpfinal.naviera.Naviera;
@@ -23,7 +23,7 @@ public class TerminalGestionada {
 	private Double posicion;
 	//private List<CircuitoMaritimo> circuitos = new ArrayList<CircuitoMaritimo>();
 	private List<Buque> buques = new ArrayList<Buque>();
-	private List<Container> containers= new ArrayList<Container>();
+	private List<Conteiner> containers= new ArrayList<Conteiner>();
 	private List<Orden> ordenes;
 	private List<Naviera> navieras;
 	private List<Chofer> choferHabilitado;
@@ -32,7 +32,7 @@ public class TerminalGestionada {
 	
 	
 
-	public TerminalGestionada(String numeroDeTerminal, Double posicion, List<CircuitoMaritimo> circuitos, List<Buque> buques, List<Container> containers) {
+	public TerminalGestionada(String numeroDeTerminal, Double posicion, List<CircuitoMaritimo> circuitos, List<Buque> buques, List<Conteiner> containers) {
 		this.nombreDeTerminal = numeroDeTerminal;
 		this.posicion = posicion;
 		//this.circuitos = circuitos;
@@ -82,7 +82,7 @@ public class TerminalGestionada {
 		this.aplicarServicios(carga.getContainer(), unaOrden);
 	}
 	
-	private void aplicarServicios(Container container, Orden unaOrden) {
+	private void aplicarServicios(Conteiner container, Orden unaOrden) {
 		unaOrden.serviciosPara(container);
 	}
 
@@ -177,7 +177,7 @@ public class TerminalGestionada {
 		unBuque.cambiarAOutbound();
 	}
 
-	public List<Container> getContainers() {
+	public List<Conteiner> getContainers() {
 		return this.containers;
 	}
 

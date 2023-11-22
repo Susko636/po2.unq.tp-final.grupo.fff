@@ -1,6 +1,6 @@
 package unqipoo2tpfinal.container;
 
-public class Container {
+public class Conteiner {
 	
 	private Double ancho;
 	private Double altura;
@@ -8,7 +8,7 @@ public class Container {
 	private Double pesoTotal;
 	protected Double consumo;
 	
-	public Container(Double ancho, Double altura,Double largo, Double pesoTotal) {
+	public Conteiner(Double ancho, Double altura,Double largo, Double pesoTotal) {
 		super();
 		this.ancho = ancho;
 		this.altura = altura;

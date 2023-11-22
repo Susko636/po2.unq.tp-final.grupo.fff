@@ -5,16 +5,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import unqipoo2tpfinal.container.Container;
+import unqipoo2tpfinal.container.Conteiner;
 import unqipoo2tpfinal.container.Dry;
 import unqipoo2tpfinal.container.Reefer;
 import unqipoo2tpfinal.container.Tank;
 
 class TestCaseContainer {
 
-	private Container containerSeco;
-	private Container containerTanque;
-	private Container containerRefrigerado;
+	private Conteiner containerSeco;
+	private Conteiner containerTanque;
+	private Conteiner containerRefrigerado;
 	
 	@BeforeEach
 	public void setUp() {

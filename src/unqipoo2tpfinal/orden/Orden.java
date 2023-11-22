@@ -1,11 +1,11 @@
 package unqipoo2tpfinal.orden;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import unqipoo2tpfinal.TerminalPortuaria;
 import unqipoo2tpfinal.Viaje;
 import unqipoo2tpfinal.cliente.Cliente;
-import unqipoo2tpfinal.container.Container;
+import unqipoo2tpfinal.container.Conteiner;
 import unqipoo2tpfinal.empresaTransportista.Camion;
 import unqipoo2tpfinal.empresaTransportista.Chofer;
 import unqipoo2tpfinal.servicio.Servicio;
@@ -18,14 +18,15 @@ public class Orden {
 	private Chofer choferAsignado;
 	private Camion camionAsignado;
 	private List<Servicio> servicios;	
-	private TerminalPortuaria unaTerminal;
+	//private TerminalPortuaria unaTerminal;
 	private Viaje viaje;
 	private Cliente duenio;
 
-	protected Orden( Viaje viaje, Cliente duenio) {
+	public Orden( Viaje viaje, Cliente duenio) {
 		super();
 		this.viaje = viaje;
 		this.duenio = duenio;
+		this.servicios = new ArrayList<Servicio>();
 	}
 
 	public void setChofer(Chofer chofer) {
@@ -48,15 +49,15 @@ public class Orden {
 		return this.servicios;
 	}
 
-	public TerminalPortuaria getUnaTerminal() {
-		return unaTerminal;
-	}
+	/*public TerminalPortuaria getUnaTerminal() {
+		return this.unaTerminal;
+	}*/
 	
 	public Viaje getViaje() {
 		return this.viaje;
 	}
 	
-	public void serviciosPara(Container container) {
+	public void serviciosPara(Conteiner container) {
 		this.registrarServicio(new ServicioLavado());
 		this.registrarServicio(new ServicioPesado());
 		this.registrarServicio(new ServicioElectricidad(container.getConsumo()));
@@ -72,11 +73,13 @@ public class Orden {
 	}
 
 	public Cliente getDuenio() {
-		return duenio;
+		return this.duenio;
 	}
 
 	public void enviarMail(String string, Cliente duenio2) {
-		duenio.recibirMensaje(string);
+		this.duenio.recibirMensaje(string);
 	}
+
+	
 	
 }

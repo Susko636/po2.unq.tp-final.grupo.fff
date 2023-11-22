@@ -25,15 +25,6 @@ public class OrdenExportacion extends Orden{
 	}
 	
 
-
-	public Chofer getChofer() {
-		return this.chofer;
-	}
-
-	public Camion getCamion() {
-		return this.camion;
-	}
-
 	public TerminalPortuaria getTerminalLlegada() {
 		return this.terminalLlegada;
 	}

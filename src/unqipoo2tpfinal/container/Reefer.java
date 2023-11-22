@@ -1,6 +1,6 @@
 package unqipoo2tpfinal.container;
 
-public class Reefer extends Container{
+public class Reefer extends Conteiner{
 	
 	private Double consumo;
 
