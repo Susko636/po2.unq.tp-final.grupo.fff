@@ -3,10 +3,6 @@ package unqipoo2tpfinal;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-<<<<<<< HEAD
-=======
-import org.junit.After;
->>>>>>> 79812837d783381c17a51d5e29b0c12965e22284
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,26 +23,18 @@ class TestCaseBuque {
 
 	@Test
 	void testEsEstadoDeparting() {
-<<<<<<< HEAD
 		
 		when(unViaje.getBuqueAsignado()).thenReturn(unBuque);
 		when(unViaje.getTerminalDeSalida()).thenReturn(unaTerminal);
-=======
 		when(unViaje.getTerminalDeSalida()).thenReturn(unaTerminal);
 		when(unViaje.getBuqueAsignado()).thenReturn(unBuque);
->>>>>>> 79812837d783381c17a51d5e29b0c12965e22284
 		when(unaTerminal.getPosicion()).thenReturn(100d);
 		
 		unBuque.distanciaATerminalDeLlegada();
 		
-<<<<<<< HEAD
-		System.out.println(unBuque.getEstadoBuque());
-=======
 		System.out.println(unBuque.getEstadoBuque() + " 1");
->>>>>>> 79812837d783381c17a51d5e29b0c12965e22284
-
 	}
-	/*
+	
 	@Test
     void testEsEstadoOutbound() {
 
@@ -60,19 +48,11 @@ class TestCaseBuque {
         //unBuque.getEstadoBuque().distanciaHasta(unViaje);;
 
         System.out.println(unBuque.getEstadoBuque()+ " 2");
-
-<<<<<<< HEAD
-    }	
-=======
-    }
-	@After
-	void tearDown() {
-		unBuque.avanzar(5d);
-	}
->>>>>>> 79812837d783381c17a51d5e29b0c12965e22284
-
-	@Test
-    void testEsEstadoInbound() {
+	
+	}	
+		
+		@Test
+    	void testEsEstadoInbound() {
 
         when(unViaje.getTerminalDeSalida()).thenReturn(unaTerminal);
         when(unViaje.getTerminalDeLlegada()).thenReturn(otraTerminal);
@@ -89,15 +69,10 @@ class TestCaseBuque {
         //unBuque.getEstadoBuque().distanciaHasta(unViaje);
 
         //assertEquals(unBuque.getEstadoBuque(), estado);
-<<<<<<< HEAD
-        System.out.println(unBuque.getEstadoBuque());
-	}
-=======
+	
+	
         System.out.println(unBuque.getEstadoBuque() + " 3");
-}	
-
-
->>>>>>> 79812837d783381c17a51d5e29b0c12965e22284
+	}
 
 	@Test
 	void testEsEstadoArrived() {
@@ -153,6 +128,7 @@ class TestCaseBuque {
 
 	@Test
     void testEsEstadoDeWorkingADeparting() {
+    
 		when(unViaje.getTerminalDeSalida()).thenReturn(unaTerminal);
         when(unViaje.getTerminalDeLlegada()).thenReturn(otraTerminal);
         when(unViaje.getBuqueAsignado()).thenReturn(unBuque);
@@ -161,15 +137,15 @@ class TestCaseBuque {
 
         unBuque.avanzar(5d);
         unBuque.distanciaATerminalDeLlegada();
-//unBuque.getEstadoBuque().distanciaHasta(unViaje); //Pasa a estado OutBound :)
+		//unBuque.getEstadoBuque().distanciaHasta(unViaje); //Pasa a estado OutBound :)
 
         unBuque.avanzar(155d);
         unBuque.distanciaATerminalDeLlegada();
-//unBuque.getEstadoBuque().distanciaHasta(unViaje);   // Pasa a estado InBound ;)
+		//unBuque.getEstadoBuque().distanciaHasta(unViaje);   // Pasa a estado InBound ;)
 
         unBuque.avanzar(40d);
         unBuque.distanciaATerminalDeLlegada();
-//unBuque.getEstadoBuque().distanciaHasta(unViaje);   // Pasa a estado Arrived :P
+		//unBuque.getEstadoBuque().distanciaHasta(unViaje);   // Pasa a estado Arrived :P
 
 		//unBuque.getEstadoBuque().distanciaHasta(unViaje);
 		unBuque.distanciaATerminalDeLlegada();
@@ -181,8 +157,8 @@ class TestCaseBuque {
 		unBuque.terminarTrabajo();
 		//unaTerminal.depart(unBuque)						//Termina en estado Departing :*
 
-       System.out.println(unBuque.getEstadoBuque()+  " 6");
+       System.out.println(unBuque.getEstadoBuque() + " 6");
 
     }
-	*/
+
 }
