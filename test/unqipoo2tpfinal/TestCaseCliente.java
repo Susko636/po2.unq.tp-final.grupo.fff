@@ -21,8 +21,8 @@ import unqipoo2tpfinal.orden.Orden;
 
 class TestCaseCliente {
 	
-	private Cliente shipper; 
-	private Cliente consignee;
+	private Cliente cliente1; 
+	private Cliente cliente2;
 	private EmpresaTransportista empresa;
 	private ArrayList<Chofer> choferes;
 	private ArrayList<Camion> camiones;
@@ -35,9 +35,10 @@ class TestCaseCliente {
 	@BeforeEach
 	public void setUp() {
 		
+		carga = Carga.ALIMENTOS;
 		criterio = mock(BuscadorDeMejorCircuito.class);
-		shipper  = new Shipper("cliente 1", carga, criterio);
-		consignee  = new Consignee("cliente 2", carga, criterio);
+		cliente1  = new Shipper("cliente 1", carga, criterio);
+		cliente2  = new Consignee("cliente 2", carga, criterio);
 		choferes = new ArrayList<Chofer>();
 		camiones = new ArrayList<Camion>();
 		orden = mock(Orden.class);
@@ -51,16 +52,14 @@ class TestCaseCliente {
 	}
 	
 	@Test
-	void testCreacionDeShipper() {
+	void testCreacionDeCliente1() {
 		
-		assertEquals(shipper.getNombre(), "cliente 1");
+		assertEquals(cliente1.getCriterioDeMejor(), criterio);
+		assertEquals(cliente1.getNombre(), "cliente 1");
+		assertEquals(cliente1.getCarga(), Carga.ALIMENTOS);
 		
 	}
 	
-	@Test
-	void testCreacionDeConsignee() {
-		assertEquals(consignee.getNombre(), "cliente 2");
-	}
 	
 	@Test
 	void testContratarEmpresaTransportista() {
@@ -71,10 +70,10 @@ class TestCaseCliente {
 		when(empresa.asignarChofer()).thenReturn(chofer);
 		when(empresa.asignarCamion()).thenReturn(camion);
 		
-		shipper.contratarEmpresa(empresa);
+		cliente1.contratarEmpresa(empresa);
 		
-		assertTrue(empresa.getChoferes().contains(shipper.getChoferAsignado()));
-		assertTrue(empresa.getCamiones().contains(shipper.getCamionAsignado()));
+		assertTrue(empresa.getChoferes().contains(cliente1.getChoferAsignado()));
+		assertTrue(empresa.getCamiones().contains(cliente1.getCamionAsignado()));
 		
 		verify(empresa).asignarCamion();
 		verify(empresa).asignarChofer();
@@ -89,10 +88,10 @@ class TestCaseCliente {
 		when(empresa.asignarChofer()).thenReturn(chofer);
 		when(empresa.asignarCamion()).thenReturn(camion);
 		
-		consignee.contratarEmpresa(empresa);
+		cliente2.contratarEmpresa(empresa);
 		
-		assertTrue(empresa.getChoferes().contains(consignee.getChoferAsignado()));
-		assertTrue(empresa.getCamiones().contains(consignee.getCamionAsignado()));
+		assertTrue(empresa.getChoferes().contains(cliente2.getChoferAsignado()));
+		assertTrue(empresa.getCamiones().contains(cliente2.getCamionAsignado()));
 		
 		verify(empresa).asignarCamion();
 		verify(empresa).asignarChofer();
@@ -109,12 +108,32 @@ class TestCaseCliente {
 		when(orden.getCamion()).thenReturn(camion);
 		when(orden.getChofer()).thenReturn(chofer);
 		
-		shipper.contratarEmpresa(empresa);
-		shipper.notificarChoferYCamion(orden);
+		cliente1.contratarEmpresa(empresa);
+		cliente1.notificarChoferYCamion(orden);
 		
 		assertEquals(orden.getChofer(), chofer);
 		assertEquals(orden.getCamion(), camion);
 		
+	}
+	
+	@Test
+	void testComprobacionQueElChoferYElCamionSeanLosAsignados() {
+		
+
+		when(empresa.asignarChofer()).thenReturn(chofer);
+		when(empresa.asignarCamion()).thenReturn(camion);
+		
+		cliente2.contratarEmpresa(empresa);
+		
+		assertEquals(cliente2.informarCamion(), camion);
+		assertEquals(cliente2.informarChofer(), chofer);
+	}
+	
+	@Test
+	void TestUnClienteRecibeUnMensaje() {
+		
+		cliente2.recibirMensaje("Mensaje de Prueba");
+		assertEquals(cliente2.getBuzon(), "Mensaje de Prueba");
 	}
 	
 }
