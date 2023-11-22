@@ -8,10 +8,6 @@ public class ServicioAlmacenamiento implements Servicio{
 		return 10000d;
 	}
 
-	@Override
-	public void realizarServicio(Servicio unServicio) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

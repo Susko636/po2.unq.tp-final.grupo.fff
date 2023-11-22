@@ -14,14 +14,9 @@ public class ServicioElectricidad implements Servicio {
 		return this.getConsumo() * 10d;
 	}
 
-	private double getConsumo() {
+	public double getConsumo() {
 		return this.consumo;
 	}
 
-	@Override
-	public void realizarServicio(Servicio unServicio) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
