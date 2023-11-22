@@ -1,24 +1,25 @@
 package unqipoo2tpfinal.empresaTransportista;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EmpresaTransportista {
 	
-	private ArrayList<Chofer> choferes = new ArrayList<Chofer>();
-	private ArrayList<Camion> camiones = new ArrayList<Camion>();
+	private List<Chofer> choferes = new ArrayList<Chofer>();
+	private List<Camion> camiones = new ArrayList<Camion>();
 
-	public EmpresaTransportista(ArrayList<Chofer> choferes, ArrayList<Camion> camiones) {
+	public EmpresaTransportista(List<Chofer> choferes, List<Camion> camiones) {
 		super();
 		this.choferes = choferes;
 		this.camiones = camiones;
 	}
 	
-	public ArrayList<Chofer> getChoferes() {
+	public List<Chofer> getChoferes() {
 		return this.choferes;
 	}
 	
 
-	public ArrayList<Camion> getCamiones() {
+	public List<Camion> getCamiones() {
 		return this.camiones;
 	}
 

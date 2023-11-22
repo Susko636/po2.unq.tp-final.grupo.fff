@@ -1,5 +1,6 @@
 package unqipoo2tpfinal;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -171,5 +172,18 @@ class TestCaseCircuito {
 		assertFalse(unCircuito.existeAlgunTramoCon(terminal4));
 
 	}
+
+	@Test
+	void testNoSePuedeAgregarUnTramoAUnCircuitoNulo() {
+		
+		when(tramo1.getTerminalDeLlegada()).thenReturn(terminal1);
+		when(tramo2.getTerminalDeSalida()).thenReturn(terminal2);
+		
+		unCircuito.agregarTramo(tramo1);
+		
+		assertThrows( AssertionError.class, () -> unCircuito.agregarTramo(tramo2));
+		
+	}
+	
 	
 }
