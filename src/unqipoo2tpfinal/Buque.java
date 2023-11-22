@@ -1,6 +1,8 @@
 package unqipoo2tpfinal;
 
+import unqipoo2tpfinal.EstadosDelBuque.Arrived;
 import unqipoo2tpfinal.EstadosDelBuque.Departing;
+import unqipoo2tpfinal.EstadosDelBuque.InBound;
 import unqipoo2tpfinal.EstadosDelBuque.Outbound;
 import unqipoo2tpfinal.EstadosDelBuque.Working;
 
@@ -27,14 +29,33 @@ public class Buque {
 	public EstadoBuque getEstadoBuque() {
 		return this.estadoBuque;
 	}
+
+	public Double getPosicionActual() {
+		return this.posicionActual;
+	}
 	
 	public void setEstadoBuque(EstadoBuque estadoBuque) {
 		this.estadoBuque = estadoBuque;
 	}
 	
+	public void cambiarAWorking() {
+		this.setEstadoBuque(new Working());
+	}
 
-	public Double getPosicionActual() {
-		return this.posicionActual;
+	public void cambiarAOutbound() {
+		this.setEstadoBuque(new Outbound());
+	}
+	
+	public void cambiarAInbound() {
+		this.setEstadoBuque(new InBound());
+	}
+	
+	public void cambiarADeparting() {
+		this.setEstadoBuque(new Departing());
+	}
+	
+	public void cambiarAArrived() {
+		this.setEstadoBuque(new Arrived());
 	}
 
 	public void avanzar(Double i) {
@@ -51,19 +72,10 @@ public class Buque {
 
 	public void empezarTrabajo() {
 		this.cambiarAWorking();
-		
-	}
-	
-	public void cambiarAWorking() {
-		this.setEstadoBuque(new Working());
 	}
 	
 	public void terminarTrabajo() {
-		this.setEstadoBuque(new Departing());
-	}
-
-	public void cambiarAOutbound() {
-		this.setEstadoBuque(new Outbound());
+		this.cambiarADeparting();
 	}
 	
 }

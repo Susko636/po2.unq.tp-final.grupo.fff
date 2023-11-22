@@ -11,7 +11,7 @@ import unqipoo2tpfinal.orden.OrdenExportacion;
 
 public class Shipper extends Cliente {
 	
-	private OrdenExportacion ordenDeExportacion;
+	private OrdenExportacion ordenActual;
 	private List<OrdenExportacion> ordenesRealizadas;
 	private LocalDate turno;
 	
@@ -23,7 +23,7 @@ public class Shipper extends Cliente {
 	}
 
 	public OrdenExportacion getOrdenDeExportacion() {
-		return this.ordenDeExportacion;
+		return this.ordenActual;
 	}
 
 	public List<OrdenExportacion> getOrdenesRealizadas() {
@@ -46,10 +46,16 @@ public class Shipper extends Cliente {
 
 	public void guardarOrden(OrdenExportacion unaOrden) {
 		this.ordenesRealizadas.add(unaOrden);
+		this.setOrdenExportacion(unaOrden);
 		this.notificarChoferYCamion(unaOrden);
 		
 	}
 
+
+	private void setOrdenExportacion(OrdenExportacion unaOrden) {
+		this.ordenActual = unaOrden;
+		
+	}
 
 	public Carga getCarga() {
 		return this.carga;
