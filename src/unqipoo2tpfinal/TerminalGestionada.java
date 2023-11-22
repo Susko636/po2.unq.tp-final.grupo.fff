@@ -21,7 +21,7 @@ public class TerminalGestionada {
 	
 	private String nombreDeTerminal;
 	private Double posicion;
-	private List<CircuitoMaritimo> circuitos = new ArrayList<CircuitoMaritimo>();
+	//private List<CircuitoMaritimo> circuitos = new ArrayList<CircuitoMaritimo>();
 	private List<Buque> buques = new ArrayList<Buque>();
 	private List<Container> containers= new ArrayList<Container>();
 	private List<Orden> ordenes;
@@ -35,7 +35,7 @@ public class TerminalGestionada {
 	public TerminalGestionada(String numeroDeTerminal, Double posicion, List<CircuitoMaritimo> circuitos, List<Buque> buques, List<Container> containers) {
 		this.nombreDeTerminal = numeroDeTerminal;
 		this.posicion = posicion;
-		this.circuitos = circuitos;
+		//this.circuitos = circuitos;
 		this.buques = buques;
 		this.containers = containers;
 		this.ordenes = new ArrayList<Orden>();
@@ -47,7 +47,7 @@ public class TerminalGestionada {
 		Naviera unaNaviera = this.navieraQueTieneViaje(terminalLlegada);
 		unaNaviera.asignarCriterioDeBusqueda(unShipper.getCriterioDeMejor());
 		CircuitoMaritimo unCircuito = unaNaviera.pedirMejorCircuitoHacia(terminalLlegada);
-		this.agregarCircuito(unCircuito);
+		//this.agregarCircuito(unCircuito);
 		
 		Viaje unViaje = unaNaviera.crearViajeA(terminalLlegada, unCircuito,this, LocalDate.now()); //la naviera crea el viaje con un buque y la fecha, lo devuelve
 		OrdenExportacion unaOrden = new OrdenExportacion(terminalLlegada, LocalDate.now(), unViaje.getFechaLlegada(), unViaje, unShipper);
@@ -64,7 +64,7 @@ public class TerminalGestionada {
 		Naviera unaNaviera = this.navieraQueTieneViaje(terminalSalida);
 		unaNaviera.asignarCriterioDeBusqueda(consignee.getCriterioDeMejor());
 		CircuitoMaritimo unCircuito = unaNaviera.pedirMejorCircuitoHacia(terminalSalida);
-		this.agregarCircuito(unCircuito);
+		//this.agregarCircuito(unCircuito);
 		
 		Viaje unViaje = unaNaviera.crearViajeA(terminalSalida, unCircuito,this, LocalDate.now());
 		OrdenImportacion unaOrden = new OrdenImportacion(unViaje,this,LocalDate.now(), LocalTime.now(), consignee);
@@ -105,10 +105,10 @@ public class TerminalGestionada {
 		return getNavieras().stream().filter(n->n.tieneViajePara(terminalLlegada)).toList().get(0);
 	}
 
-	public void agregarCircuito(CircuitoMaritimo unCircuito) {
+	/*public void agregarCircuito(CircuitoMaritimo unCircuito) {
 		this.getCircuitos().add(unCircuito);
 		
-	}
+	}*/
 
 	public void asignarTurno(Shipper unShipper, LocalDate turno, OrdenExportacion unaOrden) {
 		unShipper.setTurno(turno);
@@ -136,9 +136,9 @@ public class TerminalGestionada {
 	}
 
 
-	public List<CircuitoMaritimo> getCircuitos() {
+	/*public List<CircuitoMaritimo> getCircuitos() {
 		return this.circuitos;
-	}
+	}*/
 
 
 	public String getNombre() {
