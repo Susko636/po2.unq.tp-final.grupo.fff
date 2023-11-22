@@ -44,7 +44,7 @@ public class CircuitoMaritimo {
 		Double cantTerminal = 0d;
 		int i = 0;
 		while(tramosARecorrer.get(i).getTerminalDeLlegada() != terminalLlegada) {
-			cantTerminal ++;
+			cantTerminal++;
 			i++;
 		}
 		return cantTerminal;
@@ -58,6 +58,7 @@ public class CircuitoMaritimo {
 			precioTotal += tramosARecorrer.get(i).precioPorTramo();
 			i++;
 		}
+		precioTotal += tramosARecorrer.get(i).precioPorTramo();
 		return precioTotal;
 	}
 	
@@ -69,6 +70,7 @@ public class CircuitoMaritimo {
 			tiempoTotal += tramosARecorrer.get(i).getTiempoDeRecorrido();
 			i++;
 		}
+		tiempoTotal += tramosARecorrer.get(i).getTiempoDeRecorrido();
 		return tiempoTotal;
 	}
 
