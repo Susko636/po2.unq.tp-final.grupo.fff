@@ -11,9 +11,7 @@ public class Outbound implements EstadoBuque{
 	public void distanciaHasta(Viaje unViaje) {
 		Buque buque = unViaje.getBuqueAsignado();
 		if (50 >= Math.abs(buque.getPosicionActual() - unViaje.getTerminalDeLlegada().getPosicion())) {
-			buque.setEstadoBuque(new InBound());
+			buque.cambiarAInbound();
 		}	
 	}
-
-		
 }
