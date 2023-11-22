@@ -1,6 +1,7 @@
 package unqipoo2tpfinal.naviera;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import unqipoo2tpfinal.Buque;
@@ -15,11 +16,14 @@ public class Naviera {
 	private List<Buque> buques;
 	private List<CircuitoMaritimo> circuitos;
 	private BuscadorDeMejorCircuito buscador;
+	private List<Viaje> viajesDisponible;
 
 	public Naviera(List<Buque> buques, List<CircuitoMaritimo> circuitos) {
 
 		this.buques = buques;
 	    this.circuitos = circuitos;
+	    this.viajesDisponible = new ArrayList<Viaje>();
+	    
 	}
 	
 	public void setBuscador(BuscadorDeMejorCircuito criterioDeMejor) {
@@ -30,6 +34,9 @@ public class Naviera {
 		return this.buscador;
 	}
 	
+	public void agregarViajeACronograma(Viaje unViaje) {
+		this.cronograma().add(unViaje);
+	}
 
 	public List<CircuitoMaritimo> getCircuitos() {
 		return this.circuitos;
@@ -39,8 +46,8 @@ public class Naviera {
 		return this.buques;
 	}
 
-	public void cronograma() {
-		//hacer;
+	public List<Viaje> cronograma() {
+		return this.viajesDisponible;
 	}
 	
 	public Buque asignarBuque() {
@@ -58,7 +65,9 @@ public class Naviera {
 	}
 
 	public Viaje crearViajeA(TerminalPortuaria terminalLlegada, CircuitoMaritimo unCircuito, TerminalGestionada terminalGestionada, LocalDate fechaInicio) {
-		return new Viaje(this.asignarBuque(), fechaInicio, terminalGestionada, terminalLlegada, unCircuito);
+		Viaje unViaje = new Viaje(this.asignarBuque(), fechaInicio, terminalGestionada, terminalLlegada, unCircuito);
+		this.agregarViajeACronograma(unViaje);
+		return unViaje;
 	}
 
 	public void asignarCriterioDeBusqueda(BuscadorDeMejorCircuito criterioDeMejor) {
