@@ -11,7 +11,10 @@ public class CircuitoMaritimo {
 		this.tramos = new ArrayList<Tramo>();
 	}
 	
-	
+	public List<Tramo> getTramos() {
+		return this.tramos;
+	}
+
 	public void agregarTramo(Tramo unTramo) {
 		
 		Tramo ultimoTramo = this.buscarUltimoTramo();
@@ -27,12 +30,6 @@ public class CircuitoMaritimo {
 				.reduce((first, second) -> second)
 				.orElse(null);
 	}
-	
-	
-	public List<Tramo> getTramos() {
-		return this.tramos;
-	}
-
 
 	public String getMessage() {
 		return "No coinciden las terminales";
@@ -44,7 +41,7 @@ public class CircuitoMaritimo {
 		Double cantTerminal = 0d;
 		int i = 0;
 		while(tramosARecorrer.get(i).getTerminalDeLlegada() != terminalLlegada) {
-			cantTerminal ++;
+			cantTerminal++;
 			i++;
 		}
 		return cantTerminal;
@@ -58,6 +55,7 @@ public class CircuitoMaritimo {
 			precioTotal += tramosARecorrer.get(i).precioPorTramo();
 			i++;
 		}
+		precioTotal += tramosARecorrer.get(i).precioPorTramo();
 		return precioTotal;
 	}
 	
@@ -69,6 +67,7 @@ public class CircuitoMaritimo {
 			tiempoTotal += tramosARecorrer.get(i).getTiempoDeRecorrido();
 			i++;
 		}
+		tiempoTotal += tramosARecorrer.get(i).getTiempoDeRecorrido();
 		return tiempoTotal;
 	}
 
