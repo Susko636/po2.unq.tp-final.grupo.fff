@@ -9,7 +9,7 @@ public class Departing implements EstadoBuque{
 	@Override
 	public void distanciaHasta(Viaje unViaje) {
 		Buque buque = unViaje.getBuqueAsignado();
-		if (buque.getPosicionActual() != unViaje.getTerminalDeSalida().getPosicion()) {
+		if (!buque.getPosicionActual().equals(unViaje.getTerminalDeSalida().getPosicion())) {
 			buque.informarSalidaBuque(unViaje.getTerminalDeSalida());
 			buque.cambiarAOutbound();
 		}
