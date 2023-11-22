@@ -11,7 +11,10 @@ public class CircuitoMaritimo {
 		this.tramos = new ArrayList<Tramo>();
 	}
 	
-	
+	public List<Tramo> getTramos() {
+		return this.tramos;
+	}
+
 	public void agregarTramo(Tramo unTramo) {
 		
 		Tramo ultimoTramo = this.buscarUltimoTramo();
@@ -27,12 +30,6 @@ public class CircuitoMaritimo {
 				.reduce((first, second) -> second)
 				.orElse(null);
 	}
-	
-	
-	public List<Tramo> getTramos() {
-		return this.tramos;
-	}
-
 
 	public String getMessage() {
 		return "No coinciden las terminales";
