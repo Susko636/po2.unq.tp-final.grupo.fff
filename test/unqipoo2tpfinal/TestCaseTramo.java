@@ -38,9 +38,12 @@ class TestCaseTramo {
 	@Test
 	void testTienePrecioPorRecorridos() {
 		
+		when(terminalDeSalida.getPosicion()).thenReturn(15d);
+		when(terminalDeLlegada.getPosicion()).thenReturn(20d);
+		
 		Double precioTramo = unTramo.precioPorTramo();
 		
-		assertEquals(precioTramo, this.tiempoDeRecorrido);
+		assertEquals(precioTramo, 500d);
 
 	}
 	

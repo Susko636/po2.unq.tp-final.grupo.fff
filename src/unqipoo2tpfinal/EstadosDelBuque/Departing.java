@@ -11,7 +11,7 @@ public class Departing implements EstadoBuque{
 		Buque buque = unViaje.getBuqueAsignado();
 		if (buque.getPosicionActual() != unViaje.getTerminalDeSalida().getPosicion()) {
 			buque.informarSalidaBuque(unViaje.getTerminalDeSalida());
-			buque.setEstadoBuque(new Outbound());
+			buque.cambiarAOutbound();
 		}
 	}
 

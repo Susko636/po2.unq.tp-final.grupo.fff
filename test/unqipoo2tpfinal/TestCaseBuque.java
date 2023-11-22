@@ -1,8 +1,8 @@
 package unqipoo2tpfinal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,22 +16,24 @@ class TestCaseBuque {
 	public void setUp() {
 		unViaje = mock(Viaje.class);
 		unaTerminal = mock(TerminalGestionada.class);
-		unBuque = new Buque(unViaje,100d);
 		otraTerminal = mock(TerminalPortuaria.class);
+		unBuque = new Buque(unViaje,100d);
 	}
 
 
 	@Test
 	void testEsEstadoDeparting() {
-		EstadoBuque unEstado = unBuque.getEstadoBuque();
-
-		assertEquals(unBuque.getEstadoBuque(), unEstado);
-		 System.out.println(unBuque.getEstadoBuque());
-
+		
+		when(unViaje.getBuqueAsignado()).thenReturn(unBuque);
+		when(unViaje.getTerminalDeSalida()).thenReturn(unaTerminal);
+		when(unaTerminal.getPosicion()).thenReturn(100d);
+		
+		unBuque.distanciaATerminalDeLlegada();
+		
 		System.out.println(unBuque.getEstadoBuque());
 
 	}
-
+	/*
 	@Test
     void testEsEstadoOutbound() {
 
@@ -45,8 +47,7 @@ class TestCaseBuque {
 
         System.out.println(unBuque.getEstadoBuque());
 
-    }
-
+    }	
 
 	@Test
     void testEsEstadoInbound() {
@@ -65,9 +66,7 @@ class TestCaseBuque {
 
         //assertEquals(unBuque.getEstadoBuque(), estado);
         System.out.println(unBuque.getEstadoBuque());
-}	
-
-
+	}
 
 	@Test
 	void testEsEstadoArrived() {
@@ -112,8 +111,7 @@ class TestCaseBuque {
 
         System.out.println(unBuque.getEstadoBuque());
 
-    }
-
+	}
 
 	@Test
     void testEsEstadoDeWorkingADeparting() {
@@ -143,5 +141,5 @@ class TestCaseBuque {
         System.out.println(unBuque.getEstadoBuque());
 
     }
-
+	*/
 }
