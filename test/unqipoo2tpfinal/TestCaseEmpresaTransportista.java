@@ -36,6 +36,16 @@ class TestCaseEmpresaTransportista {
 	}
 	
 	@Test
+	public void testUnChoferEsAsignadoAUnaEmpresa() {
+		assertEquals(empresaTransportista.asignarChofer(), chofer);
+	}
+	
+	@Test
+	public void testUnCamionEsAsignadoAUnaEmpresa() {
+		assertEquals(empresaTransportista.asignarCamion(), camion);
+	}
+	
+	@Test
 	public void testCreacionDeEmpresaTransportista() {
 		assertEquals(empresaTransportista.getChoferes(), choferes);
 		assertEquals(empresaTransportista.getCamiones(), camiones);
