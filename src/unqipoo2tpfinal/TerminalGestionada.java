@@ -89,7 +89,7 @@ public class TerminalGestionada {
 	public void informarFechaYHoraDeLlegada(Consignee consignee, LocalDate fecha, LocalTime hora, OrdenImportacion orden) {
 		consignee.setFechaTurno(fecha);
 		consignee.setHoraTurno(hora);
-		consignee.guardarOrdenImporacion(orden);
+		consignee.guardarOrdenImportacion(orden);
 	}
 
 	public void agregarCamionHabilitado(Orden unaOrden) {

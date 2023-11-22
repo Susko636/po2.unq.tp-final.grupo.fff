@@ -2,6 +2,7 @@ package unqipoo2tpfinal.cliente;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import unqipoo2tpfinal.TerminalGestionada;
@@ -12,24 +13,25 @@ import unqipoo2tpfinal.orden.OrdenImportacion;
 
 public class Consignee extends Cliente {
 	
-	private Orden ordenImportacion;
+	private Orden ordenActual;
 	private List<OrdenImportacion> ordenesRealizadas;
 	private LocalDate fechaTurno;
 	private LocalTime horaTurno;
 	
 	public Consignee(String nombre, Carga carga, BuscadorDeMejorCircuito criterioDeMejor) {
 		super(nombre, carga, criterioDeMejor);
+		this.ordenesRealizadas = new ArrayList<OrdenImportacion>();
 	}
 
 	public List<OrdenImportacion> getOrdenRealizadas(){
 		return this.ordenesRealizadas;
 	}
-	public void setOrdenesRealizadas(List<OrdenImportacion> ordenesRealizadas) {
-		this.ordenesRealizadas = ordenesRealizadas;
+	public void agregarOrden(OrdenImportacion orden) {
+		this.ordenesRealizadas.add(orden);
 	}
 
 	public Orden getOrdenImportacion() {
-		return this.ordenImportacion;
+		return this.ordenActual;
 	}
 
 	public LocalDate getFechaTurno() {
@@ -40,7 +42,7 @@ public class Consignee extends Cliente {
 		this.fechaTurno = fecha;
 	}
 	
-	public void ordenDeImprotacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada) {
+	public void ordenDeImportacion(TerminalGestionada unaTerminal, TerminalPortuaria terminalLlegada) {
 		unaTerminal.importar(terminalLlegada,this);
 		
 	}
@@ -53,16 +55,21 @@ public class Consignee extends Cliente {
 		this.horaTurno = horaTurno;
 	}
 
-	public void guardarOrdenImporacion(OrdenImportacion orden) {
-		this.ordenesRealizadas.add(orden);
+	public void guardarOrdenImportacion(OrdenImportacion orden) {
+		this.agregarOrden(orden);
+		this.setOrdenImportacionActual(orden);
 		this.notificarChoferYCamion(orden);
 		
 	}
 
+	private void setOrdenImportacionActual(OrdenImportacion orden) {
+		this.ordenActual = orden;
+	}
+
 	@Override
 	public void pagar() {
-		// TODO Auto-generated method stub
-		
+		this.getOrdenImportacion().getViaje().precio();
+		this.getOrdenImportacion().calcularPrecioPorServicios();
 	}
 
 	
