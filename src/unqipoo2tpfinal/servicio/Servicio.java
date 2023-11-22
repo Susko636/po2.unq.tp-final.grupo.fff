@@ -4,7 +4,6 @@ public interface Servicio {
 
 		public double precio();
 
-		public void realizarServicio(Servicio unServicio);
 		
 
 }

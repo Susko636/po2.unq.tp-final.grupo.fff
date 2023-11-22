@@ -7,10 +7,5 @@ public class ServicioPesado implements Servicio{
 		return 100d;
 	}
 
-	@Override
-	public void realizarServicio(Servicio unServicio) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

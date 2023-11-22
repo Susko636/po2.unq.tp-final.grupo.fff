@@ -17,7 +17,7 @@ public class FechaDeSalida extends BuscadorSimple {
 	public List<Viaje> buscar(List<Viaje> viajes) {
 		List<Viaje> resultadoDeBusqueda = new ArrayList<Viaje>();
 		resultadoDeBusqueda = 
-				viajes.stream().filter(v->v.getFechaLlegada().toString().equals(this.getValorBuscado()))
+				viajes.stream().filter(v->v.getFechaSalida().toString().equals(this.getValorBuscado()))
 				.toList();
 		return resultadoDeBusqueda;
 	}

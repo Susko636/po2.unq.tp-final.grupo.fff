@@ -4,11 +4,6 @@ public class ServicioLavado implements Servicio{
 
 	
 
-	@Override
-	public void realizarServicio(Servicio unServicio) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public double precio() {
