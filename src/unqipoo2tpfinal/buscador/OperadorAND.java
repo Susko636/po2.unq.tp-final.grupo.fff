@@ -16,7 +16,7 @@ public class OperadorAND extends BuscadorComplejo {
 	public List<Viaje> buscar(List<Viaje> viajes) {
 		Stream<Viaje> resultado1 = this.getPrimerBusqueda().buscar(viajes).stream();
 		List<Viaje> resultado2 = this.getSegundaBusqueda().buscar(viajes).stream().toList();
-		return resultado1.filter(resultado2::contains).toList();
+		return resultado1.filter(resultado2::contains).distinct().toList();
 	}
 
 }
