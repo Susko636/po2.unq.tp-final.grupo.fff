@@ -10,11 +10,11 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import unqipoo2tpfinal.buscador.FechaDeLlegada;
+import unqipoo2tpfinal.buscador.FechaDeSalida;
 
-class TestCaseFechaDeLlegada {
+class TestCaseFechaDeSalida {
 
-	private FechaDeLlegada buscadorFecha;
+	private FechaDeSalida buscadorFecha;
 	private List<Viaje> listaABuscar;
 	private List<Viaje> listaEsperada;
 	private Viaje unViaje;
@@ -26,7 +26,7 @@ class TestCaseFechaDeLlegada {
 		unViaje = mock(Viaje.class);
 		otroViaje = mock(Viaje.class);
 		
-		buscadorFecha = new FechaDeLlegada(LocalDate.now().toString());
+		buscadorFecha = new FechaDeSalida(LocalDate.now().toString());
 		
 		
 		listaABuscar = new ArrayList<Viaje>();
@@ -39,10 +39,10 @@ class TestCaseFechaDeLlegada {
 	}
 	
 	@Test
-	void testSeBuscaLaFechaDeLlegada() {
+	void testSeBuscaLaFechaDeSalida() {
 		
-		when(unViaje.getFechaLlegada()).thenReturn(LocalDate.now());
-		when(otroViaje.getFechaLlegada()).thenReturn(LocalDate.now().plusDays(1));
+		when(unViaje.getFechaSalida()).thenReturn(LocalDate.now());
+		when(otroViaje.getFechaSalida()).thenReturn(LocalDate.now().plusDays(1));
 		
 		buscadorFecha.buscar(listaABuscar);
 		assertEquals((buscadorFecha.buscar(listaABuscar)),listaEsperada);
