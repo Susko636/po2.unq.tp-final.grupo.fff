@@ -6,6 +6,10 @@ import unqipoo2tpfinal.CircuitoMaritimo;
 import unqipoo2tpfinal.TerminalPortuaria;
 
 public class BuscadorPorMenorPrecio implements BuscadorDeMejorCircuito {
+	
+	public BuscadorPorMenorPrecio() {
+		super();
+	}
 
 	@Override
 	public CircuitoMaritimo elegirMejorCircuito(List<CircuitoMaritimo> circuitos, TerminalPortuaria terminalDeLlegada) {
