@@ -52,8 +52,8 @@ public class TerminalGestionada {
 		
 		this.getOrdenes().add(unaOrden);
 		this.asignarTurno(unShipper, LocalDate.now(), unaOrden);
-		this.agregarChoferHabilitado(unaOrden);
-		this.agregarCamionHabilitado(unaOrden);
+		//this.agregarChoferHabilitado(unaOrden);
+		//this.agregarCamionHabilitado(unaOrden);
 				
 	}	 
 	
@@ -69,8 +69,8 @@ public class TerminalGestionada {
 		this.informarFechaYHoraDeLlegada(consignee, LocalDate.now(), ahora, unaOrden);
 		this.getOrdenes().add(unaOrden);
 		this.serviciosPara(consignee.getCarga(), unaOrden);
-		this.agregarChoferHabilitado(unaOrden);
-		this.agregarCamionHabilitado(unaOrden);		
+		//this.agregarChoferHabilitado(unaOrden);
+		//this.agregarCamionHabilitado(unaOrden);		
 		
 	} 
 	
@@ -89,11 +89,11 @@ public class TerminalGestionada {
 	}
 
 	public void agregarCamionHabilitado(Orden unaOrden) {
-		this.getCamionesHabilitados().add(unaOrden.getCamion());
+		this.camionHabilitado.add(unaOrden.getCamion());
 	}
 	
 	public void agregarChoferHabilitado(Orden unaOrden) {
-		this.getChoferesHabilitados().add(unaOrden.getChofer());
+		this.choferHabilitado.add(unaOrden.getChofer());
 	}
 	
 	

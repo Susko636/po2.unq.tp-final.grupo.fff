@@ -82,4 +82,16 @@ class TestCaseShippper {
 		verify(unaOrden).calcularPrecioPorServicios();
 	}
 
+	
+	@Test
+	void testIngresarCarga() {
+		when(unaOrden.getChofer()).thenReturn(chofer);
+		when(unaOrden.getCamion()).thenReturn(camion);
+		
+		shipper.guardarOrden(unaOrden);
+		
+		shipper.ingresarCarga(unaTerminal);
+		
+		verify(unaTerminal).verificarSiEsChoferOCamionHabilitado(unaOrden);
+	}
 }

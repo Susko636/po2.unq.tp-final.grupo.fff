@@ -15,6 +15,8 @@ import org.junit.jupiter.api.Test;
 
 import unqipoo2tpfinal.cliente.Carga;
 import unqipoo2tpfinal.cliente.Consignee;
+import unqipoo2tpfinal.empresaTransportista.Camion;
+import unqipoo2tpfinal.empresaTransportista.Chofer;
 import unqipoo2tpfinal.naviera.BuscadorDeMejorCircuito;
 import unqipoo2tpfinal.naviera.BuscadorPorMenorPrecio;
 import unqipoo2tpfinal.orden.Orden;
@@ -32,9 +34,13 @@ class TestCaseConsignee {
 	private TerminalGestionada unaTerminal;
 	private TerminalPortuaria terminalLlegada;
 	private Viaje viaje;
+	private Chofer chofer;
+	private Camion camion;
 	
 	@BeforeEach
 	void setUp() {
+		chofer = mock(Chofer.class);
+		camion = mock(Camion.class);
 		carga= Carga.LIQUIDOS;
 		fechaTurno = LocalDate.now();
 		horaTurno= LocalTime.now();
@@ -83,6 +89,18 @@ class TestCaseConsignee {
 		verify(orden).getViaje();
 		verify(orden).calcularPrecioPorServicios();
 		
+	}
+	
+	@Test
+	void testRetirarCarga() {
+		when(orden.getChofer()).thenReturn(chofer);
+		when(orden.getCamion()).thenReturn(camion);
+		
+		consignee.guardarOrdenImportacion(orden);
+		
+		consignee.retirarCarga(unaTerminal);
+		
+		verify(unaTerminal).verificarSiEsChoferOCamionHabilitado(orden);
 	}
 	
 

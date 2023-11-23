@@ -114,6 +114,12 @@ class TestCaseTerminalGestionada {
 		unaTerminal.contratarNaviera(unaNaviera);
 		unaTerminal.exportar(otraTerminal, unShipper);
 		
+		unaTerminal.getOrdenesDeExportacion().get(0).setChofer(unChofer);
+		unaTerminal.getOrdenesDeExportacion().get(0).setCamion(unCamion);
+		
+		unaTerminal.agregarCamionHabilitado(unaTerminal.getOrdenesDeExportacion().get(0));
+		unaTerminal.agregarChoferHabilitado(unaTerminal.getOrdenesDeExportacion().get(0));
+		
 		
 		verify(unaNaviera).asignarCriterioDeBusqueda(unShipper.getCriterioDeMejor());
 		verify(unaNaviera).pedirMejorCircuitoHacia(otraTerminal);
@@ -131,7 +137,11 @@ class TestCaseTerminalGestionada {
 		
 		verify(unShipper).recibirMensaje("Tu buque esta en viaje a destino");
 		
-		//assertTrue(unaTerminal.verificarSiEsChoferOCamionHabilitado(unaTerminal.getOrdenesDeExportacion().get(0)));
+		
+		
+		assertTrue(unaTerminal.verificarSiEsChoferOCamionHabilitado(unaTerminal.getOrdenesDeExportacion().get(0)));
+		//System.out.println(unaTerminal.getOrdenesDeExportacion().get(0).getCamion());
+		//System.out.println(unaTerminal.getCamionesHabilitados());
 	}
 	
 	@Test
@@ -147,6 +157,12 @@ class TestCaseTerminalGestionada {
 		
 		unaTerminal.contratarNaviera(unaNaviera);
 		unaTerminal.importar(otraTerminal, unConsignee);
+		
+		unaTerminal.getOrdenesDeImportacion().get(0).setChofer(unChofer);
+		unaTerminal.getOrdenesDeImportacion().get(0).setCamion(unCamion);
+		
+		unaTerminal.agregarCamionHabilitado(unaTerminal.getOrdenesDeImportacion().get(0));
+		unaTerminal.agregarChoferHabilitado(unaTerminal.getOrdenesDeImportacion().get(0));
 	
 		verify(unaNaviera).asignarCriterioDeBusqueda(unConsignee.getCriterioDeMejor());
 		verify(unaNaviera).pedirMejorCircuitoHacia(otraTerminal);
@@ -165,11 +181,8 @@ class TestCaseTerminalGestionada {
 		verify(unConsignee).recibirMensaje("Tu buque esta cercano a arrivar");
 		
 		//testCamionYChoferNoEstanHabilitadosParaElIngreso    
-		
-		
-		
-		
-		
+
+		assertTrue(unaTerminal.verificarSiEsChoferOCamionHabilitado(unaTerminal.getOrdenesDeImportacion().get(0)));
 	}
 	 
 	@Test
