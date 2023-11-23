@@ -55,7 +55,9 @@ public class OrdenImportacion extends Orden{
 		return this.horaLlegada;
 	}
 
-
-	
+	@Override
+	public boolean esDeImportacion() {
+		return true;
+	}
 
 }

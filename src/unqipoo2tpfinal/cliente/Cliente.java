@@ -85,6 +85,6 @@ public abstract class Cliente {
 
 	public void recibirMensaje(String string) {
 		this.buzon=string;
-		
 	}
+	
 }

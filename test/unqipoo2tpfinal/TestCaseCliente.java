@@ -136,4 +136,5 @@ class TestCaseCliente {
 		assertEquals(cliente2.getBuzon(), "Mensaje de Prueba");
 	}
 	
+	
 }

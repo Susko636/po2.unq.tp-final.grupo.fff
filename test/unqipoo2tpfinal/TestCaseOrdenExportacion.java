@@ -50,4 +50,14 @@ class TestCaseOrdenExportacion {
 		assertEquals(orden.getViaje(),viaje);
 		assertEquals(orden.getTerminalLlegada(),terminalLlegada);
 	}
+	
+	@Test
+	void TestEsDeExportacion() {
+		assertTrue(orden.esDeExportacion());
+	}
+	
+	@Test
+	void TestNoEsDeImportacion() {
+		assertFalse(orden.esDeImportacion());
+	}
 }

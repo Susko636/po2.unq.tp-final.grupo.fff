@@ -60,6 +60,7 @@ public class Naviera {
 		return this.getCircuitos().stream().anyMatch(c-> c.existeAlgunTramoCon(terminalLlegada));
 	}
 
+
 	public CircuitoMaritimo pedirMejorCircuitoHacia(TerminalPortuaria terminalLlegada) {
 		return this.getBuscador().elegirMejorCircuito(this.getCircuitos(),terminalLlegada);
 	}

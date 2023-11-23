@@ -37,8 +37,10 @@ public class OrdenExportacion extends Orden{
 		return this.fechaSalida;
 	}
 
+	@Override
+	public  boolean esDeExportacion() {
+		return true;
+	}
 	
-
-
 
 }

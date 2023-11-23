@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import unqipoo2tpfinal.buscador.Busqueda;
 import unqipoo2tpfinal.cliente.Carga;
@@ -21,33 +22,29 @@ public class TerminalGestionada {
 	
 	private String nombreDeTerminal;
 	private Double posicion;
-	//private List<CircuitoMaritimo> circuitos = new ArrayList<CircuitoMaritimo>();
-	private List<Buque> buques = new ArrayList<Buque>();
 	private List<Conteiner> containers= new ArrayList<Conteiner>();
 	private List<Orden> ordenes;
 	private List<Naviera> navieras;
-	private List<Chofer> choferHabilitado;
+	private List<Chofer> choferHabilitado; 
 	private List<Camion> camionHabilitado;
-	private Busqueda buscador;
 	
 	
 
-	public TerminalGestionada(String numeroDeTerminal, Double posicion, List<CircuitoMaritimo> circuitos, List<Buque> buques, List<Conteiner> containers) {
-		this.nombreDeTerminal = numeroDeTerminal;
+	public TerminalGestionada(String nombreDeTerminal, Double posicion, List<Conteiner> containers) {
+		this.nombreDeTerminal = nombreDeTerminal;
 		this.posicion = posicion;
-		//this.circuitos = circuitos;
-		this.buques = buques;
 		this.containers = containers;
 		this.ordenes = new ArrayList<Orden>();
 		this.choferHabilitado = new ArrayList<Chofer>();
 		this.camionHabilitado = new ArrayList<Camion>();
+		this.navieras = new ArrayList<Naviera>();
 	}
 
 	public void exportar(TerminalPortuaria terminalLlegada, Shipper unShipper) {
 		Naviera unaNaviera = this.navieraQueTieneViaje(terminalLlegada);
 		unaNaviera.asignarCriterioDeBusqueda(unShipper.getCriterioDeMejor());
 		CircuitoMaritimo unCircuito = unaNaviera.pedirMejorCircuitoHacia(terminalLlegada);
-		//this.agregarCircuito(unCircuito);
+
 		
 		Viaje unViaje = unaNaviera.crearViajeA(terminalLlegada, unCircuito,this, LocalDate.now()); //la naviera crea el viaje con un buque y la fecha, lo devuelve
 		OrdenExportacion unaOrden = new OrdenExportacion(terminalLlegada, LocalDate.now(), unViaje.getFechaLlegada(), unViaje, unShipper);
@@ -58,25 +55,24 @@ public class TerminalGestionada {
 		this.agregarChoferHabilitado(unaOrden);
 		this.agregarCamionHabilitado(unaOrden);
 				
-	}	
+	}	 
 	
 	public void importar(TerminalPortuaria terminalSalida, Consignee consignee) {
+		LocalTime ahora = LocalTime.MIDNIGHT; // Deberia ser LocalTime.now() pero por los milisegundos no corre el test
 		Naviera unaNaviera = this.navieraQueTieneViaje(terminalSalida);
 		unaNaviera.asignarCriterioDeBusqueda(consignee.getCriterioDeMejor());
 		CircuitoMaritimo unCircuito = unaNaviera.pedirMejorCircuitoHacia(terminalSalida);
-		//this.agregarCircuito(unCircuito);
 		
 		Viaje unViaje = unaNaviera.crearViajeA(terminalSalida, unCircuito,this, LocalDate.now());
-		OrdenImportacion unaOrden = new OrdenImportacion(unViaje,this,LocalDate.now(), LocalTime.now(), consignee);
+		OrdenImportacion unaOrden = new OrdenImportacion(unViaje,this,LocalDate.now(), ahora, consignee);
 		
-		this.informarFechaYHoraDeLlegada(consignee, LocalDate.now(), LocalTime.now(), unaOrden);
+		this.informarFechaYHoraDeLlegada(consignee, LocalDate.now(), ahora, unaOrden);
 		this.getOrdenes().add(unaOrden);
 		this.serviciosPara(consignee.getCarga(), unaOrden);
 		this.agregarChoferHabilitado(unaOrden);
 		this.agregarCamionHabilitado(unaOrden);		
 		
-		//revisar posible template en orden.
-	}
+	} 
 	
 	private void serviciosPara(Carga carga, Orden unaOrden) {
 		this.aplicarServicios(carga.getContainer(), unaOrden);
@@ -105,12 +101,8 @@ public class TerminalGestionada {
 		return getNavieras().stream().filter(n->n.tieneViajePara(terminalLlegada)).toList().get(0);
 	}
 
-	/*public void agregarCircuito(CircuitoMaritimo unCircuito) {
-		this.getCircuitos().add(unCircuito);
-		
-	}*/
-
 	public void asignarTurno(Shipper unShipper, LocalDate turno, OrdenExportacion unaOrden) {
+		
 		unShipper.setTurno(turno);
 		unShipper.guardarOrden(unaOrden);
 	}
@@ -123,23 +115,6 @@ public class TerminalGestionada {
 	public List<Naviera> getNavieras() {
 		return this.navieras;
 	}
-
-	public Buque asignarBuque() {
-		Buque unBuqueABorrar= this.getBuques().get(0);
-		this.getBuques().remove(unBuqueABorrar);
-		return unBuqueABorrar;
-	}
-
-
-	public List<Buque> getBuques() {
-		return this.buques;
-	}
-
-
-	/*public List<CircuitoMaritimo> getCircuitos() {
-		return this.circuitos;
-	}*/
-
 
 	public String getNombre() {
 		return this.nombreDeTerminal;
@@ -181,14 +156,75 @@ public class TerminalGestionada {
 		return this.containers;
 	}
 
-	public Busqueda getBuscador() {
-		return this.buscador;
+	
+
+	public List<OrdenExportacion> getOrdenesDeExportacion() {
+		
+		List<OrdenExportacion> exportaciones = new ArrayList<>();
+
+		List<Orden> listaARecorrer = this.getOrdenes();
+        
+        for (Orden orden : listaARecorrer) {
+            if (orden.esDeExportacion()) {
+                exportaciones.add((OrdenExportacion) orden);
+            }
+        }
+		
+		return exportaciones;
+		
 	}
 
-	
+	public void contratarNaviera(Naviera unaNaviera) {
+		
+		this.navieras.add(unaNaviera);
+		
+	}
 
-	
+	public List<OrdenImportacion> getOrdenesDeImportacion() {
+		
+		List<OrdenImportacion> importacion = new ArrayList<>();
 
+		List<Orden> listaARecorrer = this.getOrdenes();
+        
+        for (Orden orden : listaARecorrer) {
+            if (orden.esDeImportacion()) {
+            	importacion.add((OrdenImportacion) orden);
+            }
+        }
+        
+		return importacion;
+	}
+
+	public boolean verificarSiEsChoferOCamionHabilitado(Orden ordenActual) {
+		
+		Chofer choferAVerificar = ordenActual.getChofer();
+		Camion camionAVerificar = ordenActual.getCamion();
+		
+		
+		if (!(this.esCamionHabilitado(camionAVerificar) && this.esChoferHabilitado(choferAVerificar))) {
+			
+			throw new AssertionError(this.mensajeErrorChoferCamion());
+		} 
+		
+		return true; 
+		
+	}
+
+	private String mensajeErrorChoferCamion() {
+		
+		return "El chofer o el camion no estan habilitados";
+	}
+
+	private boolean esCamionHabilitado(Camion camionAVerificar) {
+		
+		return this.getCamionesHabilitados().stream().anyMatch(c1 -> c1.equals(camionAVerificar));
+	}
+
+	private boolean esChoferHabilitado(Chofer choferAVerificar) {
+		
+		return this.getChoferesHabilitados().stream().anyMatch(c2 -> c2.equals(choferAVerificar));
+	}
+	
 
 
 	

@@ -71,7 +71,10 @@ public class Consignee extends Cliente {
 		this.getOrdenImportacion().getViaje().precio();
 		this.getOrdenImportacion().calcularPrecioPorServicios();
 	}
-
+	
+	public void retirarCarga(TerminalGestionada unaTerminal) {
+		unaTerminal.verificarSiEsChoferOCamionHabilitado(this.ordenActual);
+	}
 	
 
 	

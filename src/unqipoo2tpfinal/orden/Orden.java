@@ -79,7 +79,14 @@ public class Orden {
 	public void enviarMail(String string, Cliente duenio2) {
 		this.duenio.recibirMensaje(string);
 	}
+	
+	public  boolean esDeExportacion() {
+		return false;
+	}
 
+	public boolean esDeImportacion() {
+		return false;
+	}
 	
 	
 }

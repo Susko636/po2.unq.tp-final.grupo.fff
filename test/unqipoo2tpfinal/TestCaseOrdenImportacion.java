@@ -55,5 +55,14 @@ class TestCaseOrdenImportacion {
 		assertEquals(orden.getTerminalDestino(), terminalDestino);
 	}
 	
+	@Test
+	void TestNoEsDeExportacion() {
+		assertFalse(orden.esDeExportacion());
+	}
+	
+	@Test
+	void TestEsDeImportacion() {
+		assertTrue(orden.esDeImportacion());
+	}
 
 }

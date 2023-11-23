@@ -48,7 +48,6 @@ public class Shipper extends Cliente {
 		this.ordenesRealizadas.add(unaOrden);
 		this.setOrdenExportacion(unaOrden);
 		this.notificarChoferYCamion(unaOrden);
-		
 	}
 
 
@@ -68,5 +67,8 @@ public class Shipper extends Cliente {
 	}
 
 
+	public void ingresarCarga(TerminalGestionada unaTerminal) {
+		unaTerminal.verificarSiEsChoferOCamionHabilitado(this.ordenActual);
+	}
 }
 
